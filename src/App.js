@@ -10,6 +10,7 @@ import Gallery from './components/Gallery';
 import Teams from './components/Teams';
 import Arrival from './components/Arrival'; 
 import Services from './components/Services';
+import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
     <Teams />
     <Arrival />
     <Services />
+    <Footer />
     </div>
   );
 }
