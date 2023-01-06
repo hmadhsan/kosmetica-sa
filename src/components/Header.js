@@ -7,7 +7,7 @@ const Header = props => {
   return (
     <header class="header">
 
-    <a href="#home" class="logo"> <img src="images/logo1.png" alt=""/> </a>
+    <a href="#home" class="logo"> <img src={require('../images/logo1.PNG')} />  </a>
 
     <form action="" class="search-form">
         <input type="search" name="" placeholder="search here..." id="search-box"/>
