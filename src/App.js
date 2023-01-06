@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Categories from './components/Categories';
 import About from './components/About';
+import Shop from './components/Shop';
+import Gallery from './components/Gallery';
 function App() {
   return (
     <div className="App">
@@ -13,6 +15,8 @@ function App() {
     <Home />
     <Categories />
     <About />
+    <Shop />
+    <Gallery />
     </div>
   );
 }
