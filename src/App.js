@@ -8,6 +8,8 @@ import About from './components/About';
 import Shop from './components/Shop';
 import Gallery from './components/Gallery';
 import Teams from './components/Teams';
+import Arrival from './components/Arrival'; 
+import Services from './components/Services';
 function App() {
   return (
     <div className="App">
@@ -19,6 +21,8 @@ function App() {
     <Shop />
     <Gallery />
     <Teams />
+    <Arrival />
+    <Services />
     </div>
   );
 }
