@@ -178,7 +178,7 @@ section {
   z-index: 1010;
   height: 100%;
   width: 100%;
-  background: url(../images/navbar-bg.png) no-repeat;
+  background: url('../src/images/navbar-bg.png') no-repeat;
   background-position: center;
   background-size: cover;
   display: -webkit-box;
@@ -378,7 +378,7 @@ section {
 }
 
 .about {
-  background: url(../images/about-bg.jpg) no-repeat;
+  background: url('../src/images/about-bg.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
