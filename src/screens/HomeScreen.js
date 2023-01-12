@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css';
-const Home = () => {
+const HomeScreen = () => {
     /* home section starts */
   return (
     <section class="home" id="home">
@@ -57,4 +57,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomeScreen

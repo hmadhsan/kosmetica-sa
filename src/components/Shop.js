@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
+import axios from 'axios';
 const Shop = () => {
+const [data, setData] = useState([]);
+const [searchProd, setSearchProd] = useState("");
+
+useEffect(() => {
+    const options = {
+        method: 'GET',
+        url: 'https://makeup.p.rapidapi.com/products.json',
+        params: {brand: 'colourpop', product_category: 'lipstick'},
+        headers: {
+          'X-RapidAPI-Key': '690d53f922mshcbf8c07e558b776p11089ajsne986f3b42904',
+          'X-RapidAPI-Host': 'makeup.p.rapidapi.com'
+        }
+      };     
+      axios.request(options).then(function (response) {
+        setData(response.data)
+          console.log(response.data);
+      }).catch(function (error) {
+          console.error(error);
+      });
+
+},[])
     /* shop section starts */
   return (
 <section class="shop" id="shop">
@@ -18,7 +40,18 @@ const Shop = () => {
         <div class="swiper-slide slide">
             <div class="image">
                 <span class="discount">-25%</span>
-                <img src={require('../images/product-1.jpg')} alt=""/>
+                {data.map((item) => {
+                 
+                 
+                    <div>
+                        {   console.log('item', item.image_link)}
+                        <img src={item.image_link} alt="image"/>
+                        </div>
+                 
+
+                })}
+                
+              
                 <div class="icons">
                     <a href="#" class="fas fa-shopping-cart"></a>
                     <a href="#" class="fas fa-heart"></a>

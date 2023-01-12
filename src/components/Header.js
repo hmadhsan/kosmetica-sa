@@ -4,20 +4,20 @@ const Header = props => {
 
     /* Header */
   return (
-    <header class="header">
+    <header className="header">
 
-    <a href="#home" class="logo"> <img src={require('../images/logo1.PNG')} />  </a>
+    <a href="#home" className="logo"> <img src={require('../images/logo1.PNG')} />  </a>
 
-    <form action="" class="search-form">
+    <form action="" className="search-form">
         <input type="search" name="" placeholder="search here..." id="search-box"/>
-        <label for="search-box" class="fas fa-search"></label>
+        <label for="search-box" classNameName="fas fa-search"></label>
     </form>
 
-    <div class="icons">
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
+    <div className="icons">
+        <div id="menu-btn" className="fas fa-bars"></div>
+        <div id="search-btn" className="fas fa-search"></div>
+        <a  href="/login" className='fas fa-sign-in-alt'></a>
+        <a href="#" className="fas fa-shopping-cart"></a>
     </div>
 
 </header>
