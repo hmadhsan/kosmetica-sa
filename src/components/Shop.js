@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import axios from 'axios';
+import products from '../products';
 const Shop = () => {
 const [data, setData] = useState([]);
 const [searchProd, setSearchProd] = useState("");
+
 
 useEffect(() => {
     const options = {
@@ -40,17 +42,18 @@ useEffect(() => {
         <div class="swiper-slide slide">
             <div class="image">
                 <span class="discount">-25%</span>
-                {data.map((item) => {
-                 
-                 
-                    <div>
-                        {   console.log('item', item.image_link)}
-                        <img src={item.image_link} alt="image"/>
-                        </div>
-                 
-
+                  
+                {products.map(item => {
+                    return (
+                        <div>
+                            <img src={item.image} alt='hello' />
+                            <h1> {item.name} </h1>
+                            </div>
+                    )
                 })}
-                
+
+                <h1> {products.length} </h1>
+
               
                 <div class="icons">
                     <a href="#" class="fas fa-shopping-cart"></a>
