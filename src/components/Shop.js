@@ -8,21 +8,13 @@ const [searchProd, setSearchProd] = useState("");
 
 
 useEffect(() => {
-    const options = {
-        method: 'GET',
-        url: 'https://makeup.p.rapidapi.com/products.json',
-        params: {brand: 'colourpop', product_category: 'lipstick'},
-        headers: {
-          'X-RapidAPI-Key': '690d53f922mshcbf8c07e558b776p11089ajsne986f3b42904',
-          'X-RapidAPI-Host': 'makeup.p.rapidapi.com'
-        }
-      };     
-      axios.request(options).then(function (response) {
-        setData(response.data)
-          console.log(response.data);
-      }).catch(function (error) {
-          console.error(error);
-      });
+   try {
+    const response =  axios.get('https://makeup-api.herokuapp.com/api/v1/products.json');
+    console.log('resp', response)
+    
+   } catch (error) {
+    console.log('error', error)
+   }
 
 },[])
     /* shop section starts */
