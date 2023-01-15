@@ -8,13 +8,9 @@ const [searchProd, setSearchProd] = useState("");
 
 
 useEffect(() => {
-   try {
-    const response =  axios.get('https://makeup-api.herokuapp.com/api/v1/products.json');
-    console.log('resp', response)
-    
-   } catch (error) {
-    console.log('error', error)
-   }
+  axios.get('https://makeup-api.herokuapp.com/api/v1/products.json').then(response => {
+    console.log('Response',response.data)
+  }).catch('error')
 
 },[])
     /* shop section starts */
