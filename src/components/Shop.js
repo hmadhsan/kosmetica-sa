@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import axios from 'axios';
-import Carousel from 'react-grid-carousel';
+import Carousel, { Item, Title } from 'react-grid-carousel';
 import { ColorRing } from 'react-loader-spinner'
+import Modal from 'react-bootstrap/Modal';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [searchProd, setSearchProd] = useState("");
     const [loading, setLoading] = useState(false);
-
+    const [show, setShow] = useState(false);
     useEffect(() => {
         getData();
     }, []);
@@ -24,7 +25,12 @@ const Shop = () => {
             console.log('err', err)
         }
     }
-
+    const handleShow = () => {
+        setShow(true)
+    }
+    const handleClose = () => {
+        setShow(false)
+    }
 
     /* shop section starts */
     return (
@@ -53,27 +59,46 @@ const Shop = () => {
                     </div>
 
                 ) : (
+                    <div onClick={handleShow}>
 
-                            <Carousel cols={5} rows={1}  gap={2} loop showDots>
-                                {products && products.slice(0,10).map((product, i ) => {
-                                    return (
-                                        <Carousel.Item key={i}>
+                        <Carousel cols={5} rows={1} gap={5} loop showDots>
+                            {products && products.slice(0, 10).map((product, i) => {
+                                return (
+                                    <Carousel.Item key={i}>
                                         <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
+
+                                        <h1>Price:{product.price} </h1>
+                                        <button className='btn'>Add to Cart</button>
+
                                     </Carousel.Item>
-                                    )
-                                })}
-
-                            
-
-                            </Carousel>
+                                )
+                            })}
 
 
-                
+
+                        </Carousel>
+
+
+                    </div>
+
 
 
                 )
                 }
 
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Modal title</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <p>Modal body text goes here.</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <button onClick={handleClose} variant="secondary">Close</button>
+                    </Modal.Footer>
+                </Modal>
 
 
 

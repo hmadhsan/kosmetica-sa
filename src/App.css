@@ -1033,6 +1033,11 @@ section {
     margin-left: 50%;
     margin-top: 50% ;
 }
+.btn{
+  background-color: #222 !important;
+  color: #fff !important;
+
+}
 }
 
 
