@@ -15,6 +15,9 @@ const About = () => {
 </div>
 
 </section>
+
+
+
   )
 }
 
