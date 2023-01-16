@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import axios from 'axios';
-import Corousel from 'react-grid-carousel';
+import Carousel from 'react-grid-carousel';
 import { ColorRing } from 'react-loader-spinner'
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -19,10 +19,10 @@ const Shop = () => {
             console.log('res', response.data);
             setProducts(response.data);
             setLoading(true)
-   
-           }catch(err){
-               console.log('err', err)
-           }
+
+        } catch (err) {
+            console.log('err', err)
+        }
     }
 
 
@@ -38,23 +38,43 @@ const Shop = () => {
 
             <div className="swiper products-slider">
 
+                {loading == false ? (
+                    <div className='featureLoader'>
+                        <ColorRing
 
-                {products && products.slice(0, 5).map(item => {
-                    return (
-                      <Corousel cols={2} rows={1} gap={10} loop>
+                            visible={true}
+                            height="80"
+                            width="80"
+                            ariaLabel="blocks-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="blocks-wrapper"
+                            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                        />
+                    </div>
 
-                            <Corousel.Item>
-                                <img width='100%' src={item.api_featured_image} alt='image' />
-                            </Corousel.Item>
+                ) : (
+
+                            <Carousel cols={5} rows={1}  gap={2} loop showDots>
+                                {products && products.slice(0,10).map((product, i ) => {
+                                    return (
+                                        <Carousel.Item key={i}>
+                                        <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
+                                    </Carousel.Item>
+                                    )
+                                })}
+
+                            
+
+                            </Carousel>
 
 
+                
 
 
-                        </Corousel>
+                )
+                }
 
 
-                    )
-                })}
 
 
             </div>
