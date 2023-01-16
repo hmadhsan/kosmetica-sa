@@ -26,6 +26,9 @@ const Footer = () => {
             <a href="#" class="link"> <i class="fas fa-angle-right"></i> terms of use </a>
         </div>
 
+
+        
+
         <div class="box">
             <h3>contact info</h3>
             <p> <i class="fas fa-phone"></i> 01878-307396 </p>
