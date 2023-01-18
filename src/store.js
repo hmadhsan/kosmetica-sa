@@ -4,12 +4,14 @@ import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 
 import {composeWithDevTools} from "redux-devtools-extension";
-import { getAllKosmeticsReduxers } from "./src/reducers/kosmeticReducer";
+import { getAllKosmeticsReducer } from "../src/reducers/kosmeticReducer";
 
 const finalReducer = combineReducers({
-    getAllKosmeticsReduxers: getAllKosmeticsReduxers
+    getAllKosmeticsReducer: getAllKosmeticsReducer
 })
 
 const initialState = {};
 const composeEnhancers = composeWithDevTools({});
-const store = createStore(finalReducer,initialState,composeEnhancers(applyMiddleware(thunk)))
+const store = createStore(finalReducer,initialState,composeEnhancers(applyMiddleware(thunk)));
+
+export default store;

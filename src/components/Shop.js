@@ -1,30 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
 import axios from 'axios';
 import Carousel, { Item, Title } from 'react-grid-carousel';
 import { ColorRing } from 'react-loader-spinner'
 import Modal from 'react-bootstrap/Modal';
+import { getAllBeautyProd } from '../actions/getAllBeautyProd';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [searchProd, setSearchProd] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loader, setLoading] = useState(false);
     const [show, setShow] = useState(false);
+    const dispatch = useDispatch();
+    const kosmeticsstate = useSelector(state => state.getAllKosmeticsReducer);
+
+    //destructure the reducer variables
+    const { kosmetics, loading, error } = kosmeticsstate;
     useEffect(() => {
-        getData();
+        dispatch(getAllBeautyProd());
     }, []);
 
 
-    const getData = async () => {
-        try {
-            const response = await axios.get('https://makeup-api.herokuapp.com/api/v1/products.json')
-            console.log('res', response.data);
-            setProducts(response.data);
-            setLoading(true)
+    // const getData = async () => {
+    //     try {
+    //         const response = await axios.get('https://makeup-api.herokuapp.com/api/v1/products.json')
+    //         console.log('res', response.data);
+    //         setProducts(response.data);
+    //         setLoading(true)
 
-        } catch (err) {
-            console.log('err', err)
-        }
-    }
+    //     } catch (err) {
+    //         console.log('err', err)
+    //     }
+    // }
     const handleShow = () => {
         setShow(true)
     }
@@ -42,9 +49,10 @@ const Shop = () => {
                     minus optio?</p>
             </div>
 
+
             <div className="swiper products-slider">
 
-                {loading == false ? (
+                {loading ? (
                     <div className='featureLoader'>
                         <ColorRing
 
@@ -58,11 +66,11 @@ const Shop = () => {
                         />
                     </div>
 
-                ) : (
+                ) : error ? <h1>Something went wrong</h1> : (
                     <div onClick={handleShow}>
 
                         <Carousel cols={5} rows={1} gap={5} loop showDots>
-                            {products && products.slice(0, 10).map((product, i) => {
+                            {kosmetics && kosmetics.slice(0, 10).map((product, i) => {
                                 return (
                                     <Carousel.Item key={i}>
                                         <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
@@ -73,19 +81,12 @@ const Shop = () => {
                                     </Carousel.Item>
                                 )
                             })}
-
-
-
                         </Carousel>
-
-
                     </div>
-
-
 
                 )
                 }
-
+{/* 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Modal title</Modal.Title>
@@ -99,7 +100,7 @@ const Shop = () => {
                         <button onClick={handleClose} variant="secondary">Close</button>
                     </Modal.Footer>
                 </Modal>
-
+ */}
 
 
             </div>

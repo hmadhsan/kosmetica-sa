@@ -1,12 +1,12 @@
 import axios from "axios";
 
 
-export const getAllBeautyProd =() => dispatch =>  {
+export const getAllBeautyProd =() => async dispatch =>  {
 
 dispatch({type: 'GET_KOSMETICS_REQUEST'})
 
 try {
-    const response = axios.get("/api/kosmetics/getbeautyproducts");
+    const response = await axios.get("/api/kosmetics/getallkosmetics");
     console.log(response);
     dispatch({type: 'GET_KOSMETICS_SUCCESS', payload: response.data})
 } 
