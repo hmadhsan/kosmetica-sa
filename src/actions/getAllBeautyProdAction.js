@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const getAllBeautyProd =() => async dispatch =>  {
+export const getAllBeautyProdAction =() => async dispatch =>  {
 
 dispatch({type: 'GET_KOSMETICS_REQUEST'})
 

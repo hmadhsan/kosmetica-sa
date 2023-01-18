@@ -1,42 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
-import axios from 'axios';
-import Carousel, { Item, Title } from 'react-grid-carousel';
+import Carousel from 'react-grid-carousel';
 import { ColorRing } from 'react-loader-spinner'
-import Modal from 'react-bootstrap/Modal';
-import { getAllBeautyProd } from '../actions/getAllBeautyProd';
+
+import { getAllBeautyProdAction } from '../actions/getAllBeautyProdAction';
+import { addToCart } from '../actions/cartActions';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [searchProd, setSearchProd] = useState("");
     const [loader, setLoading] = useState(false);
     const [show, setShow] = useState(false);
+    const [product, setProduct] = useState('');
+    const [price, setPrice] = useState('');
     const dispatch = useDispatch();
     const kosmeticsstate = useSelector(state => state.getAllKosmeticsReducer);
 
     //destructure the reducer variables
     const { kosmetics, loading, error } = kosmeticsstate;
     useEffect(() => {
-        dispatch(getAllBeautyProd());
+        dispatch(getAllBeautyProdAction());
     }, []);
 
 
-    // const getData = async () => {
-    //     try {
-    //         const response = await axios.get('https://makeup-api.herokuapp.com/api/v1/products.json')
-    //         console.log('res', response.data);
-    //         setProducts(response.data);
-    //         setLoading(true)
-
-    //     } catch (err) {
-    //         console.log('err', err)
-    //     }
-    // }
     const handleShow = () => {
         setShow(true)
     }
     const handleClose = () => {
         setShow(false)
+    }
+
+    const addToCart = () => {
+        dispatch(addToCart(product, price))
+
     }
 
     /* shop section starts */
@@ -72,11 +68,11 @@ const Shop = () => {
                         <Carousel cols={5} rows={1} gap={5} loop showDots>
                             {kosmetics && kosmetics.slice(0, 10).map((product, i) => {
                                 return (
-                                    <Carousel.Item key={i}>
+                                    <Carousel.Item key={product._id}>
                                         <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
 
                                         <h1>Price:{product.price} </h1>
-                                        <button className='btn'>Add to Cart</button>
+                                        <button className='btn' onClick={addToCart}>Add to Cart</button>
 
                                     </Carousel.Item>
                                 )
@@ -86,22 +82,6 @@ const Shop = () => {
 
                 )
                 }
-{/* 
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal title</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body>
-                        <p>Modal body text goes here.</p>
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <button onClick={handleClose} variant="secondary">Close</button>
-                    </Modal.Footer>
-                </Modal>
- */}
-
 
             </div>
 

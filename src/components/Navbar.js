@@ -1,11 +1,10 @@
 import React from 'react'
-import '../App.css';
-const Navbar = () => {
+import '../App.css';const Navbar = () => {
 
   return (
     /* navbar section */
-<nav class="navbar">
-        <div id="close-navbar" class="fas fa-times"></div>
+<nav className="navbar">
+        <div id="close-navbar" className="fas fa-times"></div>
         <a href="#home">home</a>
         <a href="#shop">shop</a>
         <a href="#gallery">gallery</a>

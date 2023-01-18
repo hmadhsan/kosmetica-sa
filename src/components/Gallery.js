@@ -3,15 +3,15 @@ import '../App.css';
 const Gallery = () => {
     /* Gallery section */
   return (
-<section class="gallery" id="gallery">
+<section className="gallery" id="gallery">
 
-<div class="heading">
+<div className="heading">
     <h1>our gallery</h1>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
         minus optio?</p>
 </div>
 
-<div class="lightbox">
+<div className="lightbox">
     <a href="images/img-1.jpg"><img src={require('../images/img-1.jpg')} alt=""/> </a>
     <a href="images/img-2.jpg"><img src={require('../images/img-2.jpg')} alt=""/> </a>
     <a href="images/img-3.jpg"><img src={require('../images/img-3.jpg')} alt=""/> </a>
