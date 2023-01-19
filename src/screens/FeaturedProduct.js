@@ -42,7 +42,7 @@ const FeaturedProduct = () => {
                         {kosmetics && kosmetics.slice(0, 10).map((product) => {
                             return (
                                 <Carousel.Item key={product._id}>
-                                    <Shop product={product} />
+                                    <Shop products={product} />
                                 </Carousel.Item>
                             )
                         })}

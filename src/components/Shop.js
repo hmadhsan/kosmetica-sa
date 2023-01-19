@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
-import Carousel from 'react-grid-carousel';
-import { ColorRing } from 'react-loader-spinner'
 
-import { getAllBeautyProdAction } from '../actions/getAllBeautyProdAction';
+
 import { addToCart } from '../actions/cartActions';
-const Shop = ({ product }) => {
-    const [products, setProducts] = useState([]);
+const Shop = ({ products }) => {
+    //const [products, setProducts] = useState([]);
     const [searchProd, setSearchProd] = useState("");
     const [loader, setLoading] = useState(false);
     const [show, setShow] = useState(false);
@@ -28,7 +26,7 @@ const Shop = ({ product }) => {
         setShow(false)
     }
 
-    const addToCart = () => {
+    const addItemtoCart = () => {
         dispatch(addToCart(product, quantity))
 
     }
@@ -38,10 +36,10 @@ const Shop = ({ product }) => {
         <section className="shop" id="shop">
 
 
-            <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
+            <img width='100%' height='200px' src={products.api_featured_image} alt='featured image' />
 
-            <h1>Price:{product.price} </h1>
-            <button className='btn' onClick={addToCart}>Add to Cart</button>
+            <h1>Price:{products.price} </h1>
+            <button className='btn' onClick={addItemtoCart}>Add to Cart</button>
 
 
 

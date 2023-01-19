@@ -1,11 +1,11 @@
-export const addToCart =(product, quantity ) => dispatch=> {
+export const addToCart =(product, quantity) => dispatch=> {
 
     let cartItem = {
         name: product.name,
         _id: product._id,
         image: product.image_link,
-        varient: varient,
-        price: price.prices[0][varient]*quantity, //individual prices
+        //varient: varient,
+        //price: price.prices[0][varient]*quantity, //individual prices
         quantity: quantity,
         prices: product.prices, //total prices of items in array
 
