@@ -31,8 +31,8 @@ const FeaturedProduct = () => {
         </div>
 
     ) : error ? <h1>Something went wrong</h1> : (
-        <div >
-
+       
+<Carousel cols={5} rows={1} gap={5} loop showDots>
             {kosmetics && kosmetics.slice(0, 6).map((product) => {
                 return (
                    <div key={product._id}>
@@ -54,8 +54,8 @@ const FeaturedProduct = () => {
                     )
                 })}
             </Carousel> */}
-
-        </div>
+</Carousel>
+ 
 
     )
     }
