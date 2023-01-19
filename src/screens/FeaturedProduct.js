@@ -33,7 +33,7 @@ const FeaturedProduct = () => {
     ) : error ? <h1>Something went wrong</h1> : (
         <div >
 
-            {kosmetics && kosmetics.slice(0, 10).map((product) => {
+            {kosmetics && kosmetics.slice(0, 6).map((product) => {
                 return (
                    <div key={product._id}>
                     <Shop product={product} />
