@@ -7,9 +7,10 @@ const Shop = ({ products }) => {
     const [searchProd, setSearchProd] = useState("");
     const [loader, setLoading] = useState(false);
     const [show, setShow] = useState(false);
-     const [product, setProduct] = useState('');
+    const [product, setProduct] = useState('');
     const [quantity, setQuantity] = useState(1);
-   
+    const [varient, setVarient] = useState('small');
+    const [price, setPrice] = useState('')
     const dispatch = useDispatch();
 
 
