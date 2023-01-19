@@ -35,7 +35,7 @@ const FeaturedProduct = () => {
             {kosmetics && kosmetics.slice(0, 10).map((product) => {
                 return (
                    <div key={product._id}>
-                    <Shop   person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }} />
+                    <Shop person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }} />
                    </div>
                 )
             })}

@@ -47,44 +47,7 @@ console.log('Products image id', imageId)
             </div>
 
 
-            <div className="swiper products-slider">
-
-                {loading ? (
-                    <div className='featureLoader'>
-                        <ColorRing
-
-                            visible={true}
-                            height="80"
-                            width="80"
-                            ariaLabel="blocks-loading"
-                            wrapperStyle={{}}
-                            wrapperClass="blocks-wrapper"
-                            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-                        />
-                    </div>
-
-                ) : error ? <h1>Something went wrong</h1> : (
-                    <div onClick={handleShow}>
-
-                        <Carousel cols={5} rows={1} gap={5} loop showDots>
-                            {kosmetics && kosmetics.slice(0, 10).map((product, i) => {
-                                return (
-                                    <Carousel.Item key={product._id}>
-                                        <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
-
-                                        <h1>Price:{product.price} </h1>
-                                        <button className='btn' onClick={addToCart}>Add to Cart</button>
-
-                                    </Carousel.Item>
-                                )
-                            })}
-                        </Carousel>
-                    </div>
-
-                )
-                }
-
-            </div>
+<h1>hehhehehe</h1>
 
         </section>
     )
