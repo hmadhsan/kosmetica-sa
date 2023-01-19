@@ -1,4 +1,4 @@
-export const addToCart =(product, quantity, price, varient ) => dispatch=> {
+export const addToCart =(product, quantity ) => dispatch=> {
 
     let cartItem = {
         name: product.name,

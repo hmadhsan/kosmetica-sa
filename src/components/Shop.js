@@ -11,8 +11,9 @@ const Shop = ({ product }) => {
     const [searchProd, setSearchProd] = useState("");
     const [loader, setLoading] = useState(false);
     const [show, setShow] = useState(false);
-    // const [product, setProduct] = useState('');
-    // const [price, setPrice] = useState('');
+     const [product, setProduct] = useState('');
+    const [quantity, setQuantity] = useState(1);
+   
     const dispatch = useDispatch();
 
 
@@ -28,7 +29,7 @@ const Shop = ({ product }) => {
     }
 
     const addToCart = () => {
-        //dispatch(addToCart(product, price))
+        dispatch(addToCart(product, quantity))
 
     }
     //home screen k andar Pizza ko import karaya hai and then wahan Pizza.js me props bhjrhy hain covid 19
