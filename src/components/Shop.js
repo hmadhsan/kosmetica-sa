@@ -14,13 +14,10 @@ const Shop = ({ product }) => {
     // const [product, setProduct] = useState('');
     // const [price, setPrice] = useState('');
     const dispatch = useDispatch();
-    const kosmeticsstate = useSelector(state => state.getAllKosmeticsReducer);
+
 
     //destructure the reducer variables
-    const { kosmetics, loading, error } = kosmeticsstate;
-    useEffect(() => {
-        dispatch(getAllBeautyProdAction());
-    }, []);
+
 
 
     const handleShow = () => {
