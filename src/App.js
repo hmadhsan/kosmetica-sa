@@ -12,6 +12,7 @@ import Arrival from './components/Arrival';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
+import FeaturedProduct from './screens/FeaturedProduct';
 function App() {
   return (
     <div className="App">
@@ -20,7 +21,7 @@ function App() {
     <HomeScreen />
     <Categories />
     <About />
-    <Shop />
+    <FeaturedProduct />
     <Gallery />
     <Teams />
     <Arrival />

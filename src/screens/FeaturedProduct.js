@@ -2,7 +2,8 @@ import React,{useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllBeautyProdAction } from '../actions/getAllBeautyProdAction';
 import Shop from '../components/Shop';
-
+import Carousel from 'react-grid-carousel';
+import { ColorRing } from 'react-loader-spinner'
 const FeaturedProduct = () => {
   const dispatch = useDispatch();
   const kosmeticsstate = useSelector(state => state.getAllKosmeticsReducer);
@@ -30,7 +31,7 @@ const FeaturedProduct = () => {
         </div>
 
     ) : error ? <h1>Something went wrong</h1> : (
-        <div onClick={handleShow}>
+        <div >
 
             {kosmetics && kosmetics.slice(0, 10).map((product) => {
                 return (
