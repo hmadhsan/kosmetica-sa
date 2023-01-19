@@ -41,7 +41,7 @@ console.log('Products image id', imageId)
         <section className="shop" id="shop">
 
             <div className="heading">
-                <h1>featured products</h1>
+                <h1>featured dsd</h1>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
                     minus optio?</p>
             </div>
