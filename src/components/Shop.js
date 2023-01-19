@@ -6,7 +6,7 @@ import { ColorRing } from 'react-loader-spinner'
 
 import { getAllBeautyProdAction } from '../actions/getAllBeautyProdAction';
 import { addToCart } from '../actions/cartActions';
-const Shop = ({name, imageId}) => {
+const Shop = ({product}) => {
     const [products, setProducts] = useState([]);
     const [searchProd, setSearchProd] = useState("");
     const [loader, setLoading] = useState(false);
@@ -15,8 +15,7 @@ const Shop = ({name, imageId}) => {
     // const [price, setPrice] = useState('');
     const dispatch = useDispatch();
     const kosmeticsstate = useSelector(state => state.getAllKosmeticsReducer);
-console.log('Productsssssss', name)
-console.log('Products image id', imageId)
+
     //destructure the reducer variables
     const { kosmetics, loading, error } = kosmeticsstate;
     useEffect(() => {
@@ -41,13 +40,23 @@ console.log('Products image id', imageId)
         <section className="shop" id="shop">
 
             <div className="heading">
-                <h1>featured dsd</h1>
+                <h1>featured products</h1>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
                     minus optio?</p>
             </div>
 
 
-<h1>hehhehehe</h1>
+            <Carousel cols={5} rows={1} gap={5} loop showDots>
+             
+                        <Carousel.Item key={product._id}>
+                            <img width='100%' height='200px' src={product.api_featured_image} alt='featured image' />
+
+                            <h1>Price:{product.price} </h1>
+                            <button className='btn' onClick={addToCart}>Add to Cart</button>
+
+                        </Carousel.Item>
+            
+            </Carousel>
 
         </section>
     )
