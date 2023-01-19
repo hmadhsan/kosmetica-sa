@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
-
-
 import { addToCart } from '../actions/cartActions';
 const Shop = ({ products }) => {
     //const [products, setProducts] = useState([]);
