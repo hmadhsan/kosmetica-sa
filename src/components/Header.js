@@ -22,7 +22,7 @@ const Header = props => {
         <div id="menu-btn" className="fas fa-bars"></div>
         <div id="search-btn" className="fas fa-search"></div>
         <a  href="/login" className='fas fa-sign-in-alt'></a>
-        <a href="#" className="fas fa-shopping-cart"> {cartstate.cartItems.length} </a>
+        <a href="#" className="fas fa-shopping-cart"> {cartItems.length} </a>
     </div>
 
 </header>
