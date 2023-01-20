@@ -10,7 +10,9 @@ const Shop = ({ products }) => {
     const [product, setProduct] = useState('');
     const [quantity, setQuantity] = useState(1);
     const [varient, setVarient] = useState('small');
-    const [price, setPrice] = useState('')
+    const [price, setPrice] = useState('');
+    const cartItemsss = useSelector(state => state.cartItems);
+   console.log('cart', cartItemsss)
     const dispatch = useDispatch();
 
 
