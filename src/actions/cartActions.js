@@ -1,15 +1,17 @@
-export const addToCart =(product, quantity, varient, price) => dispatch=> {
-console.log('product', product)
+export const addToCart =(products, quantity) => dispatch=> {
+ console.log('Prod', products)
     let cartItem = {
-        name: product.name,
-        _id: product._id,
-        image: product.image_link,
-        varient: varient,
+        name: products.name,
+        _id: products._id,
+        image: products.image_link,
+        //varient: varient,
         //price: price.prices[0][varient]*quantity, //individual prices
         quantity: quantity,
-        price: product.price, //total prices of items in array
+        price: products.price, //total prices of items in array
 
+        
     }
+    console.log('Name', cartItem.quantity)
 
     dispatch({type: 'ADD_TO_CART', payload: cartItem})
 

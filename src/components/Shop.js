@@ -4,28 +4,14 @@ import '../App.css';
 import { addToCart } from '../actions/cartActions';
 const Shop = ({ products }) => {
     //const [products, setProducts] = useState([]);
-    const [searchProd, setSearchProd] = useState("");
-    const [loader, setLoading] = useState(false);
-    const [show, setShow] = useState(false);
+
     const [product, setProduct] = useState('');
-    const [quantity, setQuantity] = useState(1);
-    const [varient, setVarient] = useState('small');
-    const [price, setPrice] = useState('');
-    const cartItemsss = useSelector(state => state.cartItems);
-   console.log('cart', cartItemsss)
+    const [quantity, setQuantity] = useState('');
     const dispatch = useDispatch();
 
 
     //destructure the reducer variables
 
-
-
-    const handleShow = () => {
-        setShow(true)
-    }
-    const handleClose = () => {
-        setShow(false)
-    }
 
     const addItemtoCart = () => {
         dispatch(addToCart(product, quantity))
