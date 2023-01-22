@@ -11,7 +11,7 @@ export const addToCart =(products, quantity) => dispatch=> {
 
         
     }
-    console.log('Name', cartItem.quantity)
+    console.log('Nameee', cartItem.quantity)
 
     dispatch({type: 'ADD_TO_CART', payload: cartItem})
 
