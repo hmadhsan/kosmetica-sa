@@ -14,7 +14,7 @@ const Footer = () => {
             <a className="link" href="#gallery"> <i className="fas fa-angle-right"></i> gallery</a>
             <a className="link" href="#team"> <i className="fas fa-angle-right"></i> team</a>
             <a className="link" href="#arrivals"> <i className="fas fa-angle-right"></i> arrivals</a>
-            <a className="link" href="#blogs"> <i className="fas fa-angle-right"></i> blogs</a>
+            <a className="link" href="#blogs"> <i className="fas fa-angle-right"></i> blogss</a>
         </div>
 
         <div className="box">
