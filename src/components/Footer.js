@@ -9,7 +9,7 @@ const Footer = () => {
 
         <div className="box">
             <h3>quick links</h3>
-            <a className="link" href="#home"> <i className="fas fa-angle-right"></i> home</a>
+            <a className="link" href="#home"> <i className="fas fa-angle-right"></i> Home</a>
             <a className="link" href="#shop"> <i className="fas fa-angle-right"></i> Shop</a>
             <a className="link" href="#gallery"> <i className="fas fa-angle-right"></i> Gallery</a>
             <a className="link" href="#team"> <i className="fas fa-angle-right"></i> Team</a>
