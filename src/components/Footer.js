@@ -21,7 +21,7 @@ const Footer = () => {
             <h3>extra links</h3>
             <a href="#" className="link"> <i className="fas fa-angle-right"></i> My order </a>
             <a href="#" className="link"> <i className="fas fa-angle-right"></i> My favorite </a>
-            <a href="#" className="link"> <i className="fas fa-angle-right"></i> my wishlist </a>
+            <a href="#" className="link"> <i className="fas fa-angle-right"></i> My wishlist </a>
             <a href="#" className="link"> <i className="fas fa-angle-right"></i> private policy </a>
             <a href="#" className="link"> <i className="fas fa-angle-right"></i> terms of use </a>
         </div>
