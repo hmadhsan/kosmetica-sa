@@ -13,7 +13,7 @@ const Footer = () => {
             <a className="link" href="#shop"> <i className="fas fa-angle-right"></i> shop</a>
             <a className="link" href="#gallery"> <i className="fas fa-angle-right"></i> gallery</a>
             <a className="link" href="#team"> <i className="fas fa-angle-right"></i> team</a>
-            <a className="link" href="#arrivals"> <i className="fas fa-angle-right"></i> arrivals</a>
+            <a className="link" href="#arrivals"> <i className="fas fa-angle-right"></i> Arrivals</a>
             <a className="link" href="#blogs"> <i className="fas fa-angle-right"></i> blogss</a>
         </div>
 
