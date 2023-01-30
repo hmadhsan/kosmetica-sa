@@ -35,6 +35,7 @@ const Footer = () => {
             <p> <i className="fas fa-phone"></i> 01684-346530 </p>
             <p> <i className="fas fa-envelope"></i> kosmetica@gmail.com </p>
             <p> <i className="fas fa-map"></i> TH Bingen, Germany. </p>
+            
             <div className="share">
                 <a href="#" className="fab fa-facebook-f"></a>
                 <a href="#" className="fab fa-twitter"></a>
