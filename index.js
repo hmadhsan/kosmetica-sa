@@ -20,6 +20,8 @@ app.get("/", (req,res)=>{
 app.use("/customers", require("./routes/customerRoutes"))
 app.use("/categories", require("./routes/categoryRoutes"))
 app.use("/products", require("./routes/productRoutes"))
+
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT);
 

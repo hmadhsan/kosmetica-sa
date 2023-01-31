@@ -1,4 +1,4 @@
-const router = require("express").Router;
+const router = require("express").Router();
 const {Product} = require("../models/Product");
 
 router.post("/", (req, res) => {
