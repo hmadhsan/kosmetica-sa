@@ -1,33 +1,122 @@
-import logo from './logo.svg';
-import './App.css';
-//import bootstrap from 'bootstrap';
-import Header from './components/Header';
-import Navbar from './components/Navbar';
-import Categories from './components/Categories';
-import About from './components/About';
-import Shop from './components/Shop';
-import Gallery from './components/Gallery';
-import Teams from './components/Teams';
-import Arrival from './components/Arrival'; 
-import Services from './components/Services';
-import Footer from './components/Footer';
-import HomeScreen from './screens/HomeScreen';
-import FeaturedProduct from './screens/FeaturedProduct';
+import { UserOutlined } from "@ant-design/icons";
+import { Layout, Menu, message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import logo from "./assets/images/logo.png";
+import Auth from "./Auth";
+import ChangePassword from "./containers/ChangePassword";
+import ForgotPassord from "./containers/ForgotPassord";
+import Home from "./containers/Home";
+import Login from "./containers/Login";
+import Register from "./containers/Register";
+import ResetPassword from "./containers/ResetPassword";
+import useCustomers from "./_actions/customerActions";
+
+const { Header, Content, Footer } = Layout;
+const { SubMenu } = Menu;
+
 function App() {
+  let auth = useSelector((state) => state.customer.auth);
+  const { customerLogout } = useCustomers();
+  const dispatch = useDispatch();
+
+  const handleLogout = ({ key }) => {
+    if (key === "logout") {
+      dispatch(customerLogout()).then((res) => {
+        if (res.payload.status) {
+          localStorage.removeItem("customerToken");
+          message.success(res.payload.message);
+        }
+      });
+    }
+  };
+  const renderHeader = () => {
+    const fullName = `${auth?.data?.firstName} ${auth?.data?.lastName}`;
+    return (
+      <Header className="app-header">
+        <img src={logo} className="app-logo" />
+        <Menu
+          theme="light"
+          mode="horizontal"
+          defaultSelectedKeys={["login"]}
+          onClick={handleLogout}
+        >
+          <Menu.Item key="home">
+            <Link to="/">Home</Link>
+          </Menu.Item>
+          {auth?.status ? (
+            <SubMenu
+              key="account"
+              icon={<UserOutlined />}
+              title={`Hi ${fullName}`}
+            >
+              <Menu.Item key="changePassword">
+                <Link to="changePassword">Change Password</Link>
+              </Menu.Item>
+              <Menu.Item key="logout">Logout</Menu.Item>
+            </SubMenu>
+          ) : (
+            <>
+              <Menu.Item key="login">
+                <Link to="login">Login</Link>
+              </Menu.Item>
+              <Menu.Item key="register">
+                <Link to="register">Register</Link>
+              </Menu.Item>
+            </>
+          )}
+        </Menu>
+      </Header>
+    );
+  };
+
   return (
-    <div className="App">
-    <Header />
-    <Navbar />
-    <HomeScreen />
-    <Categories />
-    <About />
-    <FeaturedProduct />
-    <Gallery />
-    <Teams />
-    <Arrival />
-    <Services />
-    <Footer />
-    </div>
+    <BrowserRouter>
+      <Layout>
+        {renderHeader()}
+        <Content className="app-content">
+          <div className="app-wrapper">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Auth>
+                    <Home />
+                  </Auth>
+                }
+              />
+              <Route path="/forgotPassword" element={<ForgotPassord />} />
+              <Route path="/resetPassword/:token" element={<ResetPassword />} />
+              <Route
+                path="/changePassword"
+                element={
+                  <Auth authRoute={true} redirectTo="/login">
+                    <ChangePassword />
+                  </Auth>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <Auth redirectTo="/">
+                    <Login />
+                  </Auth>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <Auth redirectTo="/">
+                    <Register />
+                  </Auth>
+                }
+              />
+            </Routes>
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>Dev It Media @2022</Footer>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
