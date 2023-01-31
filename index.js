@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/auth-app');
+mongoose.connect('mongodb://localhost:27017/kosmetica-sa');
 
 const app = express();
 
@@ -18,7 +18,8 @@ app.get("/", (req,res)=>{
 });
 
 app.use("/customers", require("./routes/customerRoutes"))
-
+app.use("/categories", require("./routes/categoryRoutes"))
+app.use("/products", require("./routes/productRoutes"))
 const PORT = process.env.PORT || 4000;
 app.listen(PORT);
 
