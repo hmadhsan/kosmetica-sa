@@ -7,7 +7,7 @@ import banner1 from "../assets/images/img-1.jpg";
 import banner2 from "../assets/images/img-2.jpg";
 import banner3 from "../assets/images/img-3.jpg";
 import useProducts from '../_actions/productActions';
-
+import ProductFilters from '../components/Filters/ProductFilters';
 const contentStyle = {
   margin: 0,
   height: '600px',
@@ -23,6 +23,7 @@ const { Text } = Typography;
 const initialQuery = {
   skip: 0,
   filters: { price: { $gte: 4, $lte: 100 } }
+
 }
 function Home() {
   const dispatch = useDispatch();
@@ -47,6 +48,29 @@ function Home() {
     }
     setQuery(query);
     getProductList(newQuery);
+  }
+
+
+  const handleSearch = (filters) => {
+    const newQuery = {
+      skip: 0,
+      filters,
+    }
+    setQuery(newQuery);
+    getProductList(newQuery)
+  }
+
+
+  const handleClearSearch = () => {
+    setQuery(initialQuery);
+    getProductList(initialQuery)
+  }
+
+  const renderFilters = () => {
+    return (
+      <ProductFilters onSearch={handleSearch} onClear={handleClearSearch} initialFiters={initialQuery.filters} />
+    )
+
   }
 
   useEffect(() => {
@@ -106,6 +130,7 @@ function Home() {
   return (
     <div>
       {renderImages()}
+      {renderFilters()}
       {renderProductList()}
       <div className='product-load-more'>
         {query?.skip <= productList?.length ? (
