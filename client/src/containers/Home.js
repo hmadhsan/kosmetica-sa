@@ -69,7 +69,7 @@ function Home() {
 
   const renderFilters = () => {
     return (
-      <ProductFilters onSearch={handleSearch} onClear={handleClearSearch} initialFiters={initialQuery.filters} />
+      <ProductFilters onSearch={handleSearch} onClear={handleClearSearch} initialFilters={initialQuery.filters} />
     )
 
   }
