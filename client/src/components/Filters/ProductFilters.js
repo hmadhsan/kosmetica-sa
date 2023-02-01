@@ -40,10 +40,10 @@ const ProductFilters = (props) => {
                         <Text>Price From</Text>
                     </Col>
                     <Col span={13}>
-                        <Slider min={1} max={100} value={filters} />
+                        <Slider min={1} max={100} value={filters.price.$gte} />
                     </Col>
                     <Col span={4}>
-                        <InputNumber min={1} max={20} value={filters} />
+                        <InputNumber min={1} max={20} value={filters.price.$gte} />
                     </Col>
                 </Row>
             </Col>
@@ -54,10 +54,10 @@ const ProductFilters = (props) => {
                         <Text>Price To</Text>
                     </Col>
                     <Col span={13}>
-                        <Slider min={1} max={100} value={filters} />
+                        <Slider min={1} max={100} value={filters.price.$lte} />
                     </Col>
                     <Col span={4}>
-                        <InputNumber min={1} max={20} value={filters} />
+                        <InputNumber min={1} max={20} value={filters.price.$lte} />
                     </Col>
                 </Row>
             </Col>
