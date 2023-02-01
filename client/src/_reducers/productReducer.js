@@ -1,4 +1,4 @@
-import { PRODUCT_LIST } from "../_actions/types";
+import { PRODUCT_LIST, PRODUCT_LIST_MORE } from "../_actions/types";
 
 const initialState = {
     productList: null
@@ -11,6 +11,11 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 productList: action.payload.data
             }
+            case PRODUCT_LIST_MORE:
+                return {
+                    ...state,
+                    productList:[...state.productList, ...action.payload.data]
+                }
 
         default:
         return state;

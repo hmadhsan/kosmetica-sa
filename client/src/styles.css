@@ -35,3 +35,9 @@
 .page-wrapper {
   padding: 10px;
 }
+
+.product-load-more{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
