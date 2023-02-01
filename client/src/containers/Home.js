@@ -43,6 +43,7 @@ function Home() {
 
   const handleLoadMore = () => {
     const newQuery = {
+      ...query,
       skip: query.skip + 8,
       loadMore: true
     }
