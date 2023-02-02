@@ -19,5 +19,5 @@ const productchema = mongoose.Schema({
     }
 }, { versionKey: false, _id: false });
 
-const OrderDetailSchema = mongoose.model('orderDetails', productchema);
-module.exports = { OrderDetailSchema };
+const OrderDetails = mongoose.model('orderDetails', productchema);
+module.exports = { OrderDetails };

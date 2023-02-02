@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const orderDetailSchema =  require('./Order').OrderDetailSchema.schema;
+const orderDetailSchema =  require('./Order').OrderDetails.schema;
 const cartSchema = mongoose.Schema({
     _customerId: {
         type: mongoose.Schema.Types.ObjectId,
