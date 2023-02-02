@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
-import { Button, Row, InputNumber, Input, Slider, Card, Space, Typography, Col } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Button, Row, InputNumber, Input, Slider, Card, Space, Typography, Col, Select } from 'antd';
 import { CloseCircleOutlined, SearchOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
+import useProducts from '../../_actions/productActions';
 const { Text } = Typography
 const ProductFilters = (props) => {
     const { initialFilters, onSearch, onClear } = props;
     const [filters, setFilters] = useState(initialFilters);
     const [keyword, setKeyword] = useState(null);
-
+    const categoryList = useSelector(state => state.product.categoryList)
     const handleKeywordChange = (e) => {
         const value = e.target.value;
         setKeyword(value);
