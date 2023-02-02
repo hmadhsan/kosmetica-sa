@@ -46,7 +46,7 @@ router.post('/addToCart', auth, async, (req, res) => {
             if (error) res.json({ status: false, error });
             if (data) {
                 res.status(200).json({ status: true, message: 'Add items to cart successfully!' })
-            }else {
+            } else {
                 // if item doesnot exist in cart, push them to cart
                 Cart.findOneAndUpdate({
                     _customerId: req.customerId
@@ -56,11 +56,11 @@ router.post('/addToCart', auth, async, (req, res) => {
                             ...cartDetails
                         }
                     }
-                },{new: true, }).populate(populate).exec().then((data, error)=> {
+                }, { new: true, }).populate(populate).exec().then((data, error) => {
                     if (error) res.json({ status: false, error });
-                    if (data) {
-                        res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
-                    }
+
+                    res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+
                 })
             }
         })
