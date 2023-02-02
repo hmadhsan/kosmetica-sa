@@ -58,10 +58,10 @@ const ProductFilters = (props) => {
                         <Text>Price From</Text>
                     </Col>
                     <Col span={13}>
-                        <Slider min={1} max={100} value={filters.price.$gte} />
+                        <Slider min={1} max={100} value={filters.price.$gte} onChange={handlePriceFromChange} />
                     </Col>
                     <Col span={4}>
-                        <InputNumber min={1} max={20} value={filters.price.$gte} />
+                        <InputNumber min={1} max={20} value={filters.price.$gte} onChange={handlePriceFromChange} />
                     </Col>
                 </Row>
             </Col>
@@ -72,10 +72,10 @@ const ProductFilters = (props) => {
                         <Text>Price To</Text>
                     </Col>
                     <Col span={13}>
-                        <Slider min={1} max={100} value={filters.price.$lte} />
+                        <Slider min={1} max={100} value={filters.price.$lte} onChange={handlePriceToChange} />
                     </Col>
                     <Col span={4}>
-                        <InputNumber min={1} max={20} value={filters.price.$lte} />
+                        <InputNumber min={1} max={20} value={filters.price.$lte} onChange={handlePriceToChange} />
                     </Col>
                 </Row>
             </Col>
