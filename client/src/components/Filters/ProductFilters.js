@@ -34,6 +34,23 @@ const ProductFilters = (props) => {
             _category: value
         })
     }
+
+    const handlePriceFromChange = (value) => {
+        const price = { ...filters.price };
+        price.$gte = value;
+        setFilters({
+            ...filters,
+            price
+        });
+    }
+    const handlePriceToChange = (value) => {
+        const price = { ...filters.price };
+        price.$lte = value;
+        setFilters({
+            ...filters,
+            price
+        });
+    }
     useEffect(() => {
         getCategoryList();
     }, [])
