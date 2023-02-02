@@ -16,10 +16,10 @@ const populate = {
     }
 }
 
-router.post('/addToCart', auth, (req, res) => {
+router.post('/addToCart', auth, async (req, res) => {
     //find if customer cart already exist
-    const customerCart = Cart.findOne({ _customerId: req.customerId });
-    const product = Product.findById(req.body._productId);
+    const customerCart =await Cart.findOne({ _customerId: req.customerId });
+    const product = await Product.findById(req.body._productId);
 
     const cartDetails = {
         _product: req.body._productId,
