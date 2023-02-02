@@ -16,10 +16,10 @@ const populate = {
     }
 }
 
-router.post('/addToCart', auth, async, (req, res) => {
+router.post('/addToCart', auth, (req, res) => {
     //find if customer cart already exist
-    const customerCart = await Cart.findOne({ _customerId: req.customerId });
-    const product = await Product.findById(req.body._productId);
+    const customerCart = Cart.findOne({ _customerId: req.customerId });
+    const product = Product.findById(req.body._productId);
 
     const cartDetails = {
         _product: req.body._productId,
@@ -64,6 +64,25 @@ router.post('/addToCart', auth, async, (req, res) => {
                 })
             }
         })
+    } else {
+        // if customer cart does not exist add new customer cart
+        const newCart = new Cart({
+            _customerId: req.customerId,
+            cartDetails
+        })
+        newCart.save((error, data) => {
+            if (error) res.json({ status: false, error });
+            res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+        })
     }
 
+});
+
+router.get('/', auth, (req, res) => {
+    Cart.findOne({ _customerId: req.customerId }).populate(populate).exec((error, data) => {
+        if (error) res.json({ status: false, error });
+        res.status(200).json({ status: true, message: 'Get customer cart successfully!', data })
+
+    })
 })
+module.exports = router;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Carousel, Avatar, Card, Row, Space, Typography, Col } from 'antd';
+import { Carousel, Avatar, Card, Row, Space, Typography, Col, message } from 'antd';
 import { EyeOutlined, ShoppingCartOutlined, DownOutlined } from '@ant-design/icons';
 import ProductModalDetails from '../components/modal/ProductModalDetails';
 import banner1 from "../assets/images/img-1.jpg";
@@ -8,6 +8,7 @@ import banner2 from "../assets/images/img-2.jpg";
 import banner3 from "../assets/images/img-3.jpg";
 import useProducts from '../_actions/productActions';
 import ProductFilters from '../components/Filters/ProductFilters';
+import useCarts from '../_actions/cartActions';
 const contentStyle = {
   margin: 0,
   height: '600px',
@@ -32,7 +33,7 @@ function Home() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [query, setQuery] = useState(initialQuery);
-
+  const { addToCart } = useCarts();
   const handleShowPorductDetails = (item) => {
     setSelectedProduct(item);
     setShowModal(true)
@@ -74,6 +75,23 @@ function Home() {
 
   }
 
+  // add to cart
+
+  const handleAddToCart = (item) => {
+    console.log(item)
+    const data = {
+      _productId: item._id,
+      quantity: 1
+    }
+    dispatch(addToCart(data)).then((res) => {
+      if (res.payload.status) {
+        message.success(res.payload.message);
+      } else {
+        message.error(res.error.message);
+      }
+    })
+  }
+
   useEffect(() => {
     getProductList(query);
 
@@ -112,7 +130,7 @@ function Home() {
               }
               actions={[
                 <EyeOutlined onClick={() => handleShowPorductDetails(item)} key="view" style={{ color: "orange", fontSize: 18 }} />,
-                <ShoppingCartOutlined key="cart" style={{ color: "#b82837", fontSize: 18 }} />,
+                <ShoppingCartOutlined onClick={() => handleAddToCart(item)} key="cart" style={{ color: "#b82837", fontSize: 18 }} />,
 
               ]}
             >

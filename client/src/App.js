@@ -1,7 +1,8 @@
-import { UserOutlined } from "@ant-design/icons";
-import { Layout, Menu, message } from "antd";
+import { UserOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { Layout, Menu, message, Badge } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { sumBy } from 'lodash'
 import logo from "./assets/images/logo.png";
 import Auth from "./Auth";
 import ChangePassword from "./containers/ChangePassword";
@@ -17,6 +18,7 @@ const { SubMenu } = Menu;
 
 function App() {
   let auth = useSelector((state) => state.customer.auth);
+  const cartItems = useSelector(state => state.cart.cartItems?.cartDetails);
   const { customerLogout } = useCustomers();
   const dispatch = useDispatch();
 
@@ -32,6 +34,7 @@ function App() {
   };
   const renderHeader = () => {
     const fullName = `${auth?.data?.firstName} ${auth?.data?.lastName}`;
+    const itemCount = sumBy(cartItems, (item) => item?.quantity);
     return (
       <Header className="app-header">
         <img src={logo} className="app-logo" />
@@ -45,16 +48,26 @@ function App() {
             <Link to="/">Home</Link>
           </Menu.Item>
           {auth?.status ? (
-            <SubMenu
-              key="account"
-              icon={<UserOutlined />}
-              title={`Hi ${fullName}`}
-            >
-              <Menu.Item key="changePassword">
-                <Link to="changePassword">Change Password</Link>
+            <>
+              <Menu.Item key='cart'>
+                <Link to='/cart'>
+                  <Badge count={itemCount} offset={[8, 0]}>
+                    <ShoppingCartOutlined style={{ fontSize: 20 }} />
+                  </Badge>
+                </Link>
               </Menu.Item>
-              <Menu.Item key="logout">Logout</Menu.Item>
-            </SubMenu>
+
+              <SubMenu
+                key="account"
+                icon={<UserOutlined />}
+                title={`Hi ${fullName}`}
+              >
+                <Menu.Item key="changePassword">
+                  <Link to="changePassword">Change Password</Link>
+                </Menu.Item>
+                <Menu.Item key="logout">Logout</Menu.Item>
+              </SubMenu>
+            </>
           ) : (
             <>
               <Menu.Item key="login">
