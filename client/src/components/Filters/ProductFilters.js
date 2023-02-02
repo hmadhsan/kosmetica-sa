@@ -28,6 +28,15 @@ const ProductFilters = (props) => {
         onClear();
     }
 
+    const handleSelectCategory = (value) => {
+        setFilters({
+            ...filters,
+            _category: value
+        })
+    }
+    useEffect(() => {
+        getCategoryList();
+    }, [])
     return (
         <Row gutter={[8, 8]} style={{ padding: 10 }}>
             <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={3} >
