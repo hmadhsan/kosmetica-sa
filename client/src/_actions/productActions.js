@@ -23,27 +23,22 @@ const useProducts = () => {
         }
 
     };
-    const getCategoryList = (query) => {
-        const result = axios.post("/products", query).then((res) => {
+    const getCategoryList = () => {
+        const result = axios.post("/categories").then((res) => {
             return res.data
         }).catch((err) => {
             return err.response.data
         })
-        if (query.loadMore) {
-            dispatch({
-                type: PRODUCT_LIST_MORE,
-                payload: result
-            });
-        } else {
-            dispatch({
-                type: PRODUCT_LIST,
-                payload: result
-            });
-        }
+
+        dispatch({
+            type: CATEGORY_LIST,
+            payload: result
+        });
 
     };
     return {
-        getProductList
+        getProductList,
+        getCategoryList
     }
 
 }
