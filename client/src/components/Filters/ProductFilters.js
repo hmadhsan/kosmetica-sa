@@ -8,8 +8,8 @@ const ProductFilters = (props) => {
     const { initialFilters, onSearch, onClear } = props;
     const [filters, setFilters] = useState(initialFilters);
     const [keyword, setKeyword] = useState(null);
-    const {getCategoryList} = useProducts();
-    const categoryList = useSelector(state => state.product.categoryList)
+    const { getCategoryList } = useProducts();
+    const categoryList = useSelector(state => state.product.categoryList);
     const handleKeywordChange = (e) => {
         const value = e.target.value;
         setKeyword(value);
@@ -34,7 +34,13 @@ const ProductFilters = (props) => {
                 <Input placeholder='Enter keyword' onChange={handleKeywordChange} />
             </Col>
             <Col xs={24} sm={12} md={12} lg={6} xl={5} xxl={5} >
-                Category
+                <Select placeholder='Select Category' style={{ width: '100%' }} value={filters._category} onChange={handleSelectCategory}>
+                    {categoryList?.map((category) => (
+                        <Select.Option value={category._id}>
+                            {category.name}
+                        </Select.Option>
+                    ))}
+                </Select>
             </Col>
 
             <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={6} >
