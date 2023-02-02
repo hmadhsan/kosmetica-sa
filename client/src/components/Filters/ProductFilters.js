@@ -63,8 +63,8 @@ const ProductFilters = (props) => {
             </Col>
 
             <Col xs={24} sm={12} md={12} lg={6} xl={4} xxl={4} >
-                <Button type='primary' icon={<SearchOutlined />} onClick={handleSearch} style={{ width: '45%', marginRight: 10 }} />
-                <Button type='default' icon={<CloseCircleOutlined />} onClick={handleClearSearch} style={{ width: '45%' }} />
+                <Button type='primary' icon={<SearchOutlined />} onClick={handleSearch} style={{ width: '45%', marginRight: 10 }}>Search</Button>
+                <Button type='default' icon={<CloseCircleOutlined />} onClick={handleClearSearch} style={{ width: '45%' }}>Clear</Button>
 
             </Col>
         </Row>
