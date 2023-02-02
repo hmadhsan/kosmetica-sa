@@ -24,7 +24,7 @@ const useProducts = () => {
 
     };
     const getCategoryList = () => {
-        const result = axios.post("/categories").then((res) => {
+        const result = axios.get("/categories").then((res) => {
             return res.data
         }).catch((err) => {
             return err.response.data
