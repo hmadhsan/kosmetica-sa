@@ -8,6 +8,7 @@ const ProductFilters = (props) => {
     const { initialFilters, onSearch, onClear } = props;
     const [filters, setFilters] = useState(initialFilters);
     const [keyword, setKeyword] = useState(null);
+    const {getCategoryList} = useProducts();
     const categoryList = useSelector(state => state.product.categoryList)
     const handleKeywordChange = (e) => {
         const value = e.target.value;
