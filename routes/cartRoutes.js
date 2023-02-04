@@ -45,7 +45,7 @@ router.post('/addToCart', auth, async (req, res) => {
         }).populate(populate).exec().then((data, error) => {
             if (error) return res.json({ status: false, error });
             if (data) {
-               return res.status(200).json({ status: true, message: 'Add items to cart successfully!' })
+               return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
             } else {
                 // if item doesnot exist in cart, push them to cart
                 Cart.findOneAndUpdate({
