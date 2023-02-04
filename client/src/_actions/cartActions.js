@@ -8,8 +8,8 @@ const useCarts = () => {
         headers: { Authorization: `Bearer ${token}` },
     };
     const dispatch = useDispatch();
-    const addToCart =  (data) => {
-        const result = axios.post('/carts/addToCart', data, config).then((res) => {
+    const addToCart = async (data) => {
+        const result = await axios.post('/carts/addToCart', data, config).then((res) => {
             return res.data;
         }).catch((err) => {
             return err.response.data

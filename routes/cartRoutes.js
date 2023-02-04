@@ -17,8 +17,8 @@ const populate = {
 }
 
 router.post('/addToCart', auth, async (req, res) => {
-    //find if customer cart already exist
-    const customerCart =await Cart.findOne({ _customerId: req.customerId });
+   
+    const customerCart = await Cart.findOne({ _customerId: req.customerId });
     const product = await Product.findById(req.body._productId);
 
     const cartDetails = {
@@ -27,15 +27,14 @@ router.post('/addToCart', auth, async (req, res) => {
         price: product.price,
         amount: product.price * req.body.quantity
     }
-    //if customer cart already exist
+  
     if (customerCart) {
-        //find n updt quantity if item already exist in cart
         Cart.findOneAndUpdate({
             _customerId: req.customerId,
             'cartDetails._product': req.body._productId
         }, {
             $inc: {
-                'cartDetails.$.quanity': req.body.quantity,
+                'cartDetails.$.quantity': req.body.quantity,
                 'cartDetails.$.amount': req.price * req.body.quantity
 
             },
@@ -57,13 +56,13 @@ router.post('/addToCart', auth, async (req, res) => {
                         }
                     }
                 }, { new: true, }).populate(populate).exec().then((data, error) => {
-                    if (error) res.json({ status: false, error });
+                    if (error) return res.json({ status: false, error });
 
-                    res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+                   return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
 
                 })
             }
-        })
+        });
     } else {
         // if customer cart does not exist add new customer cart
         const newCart = new Cart({
@@ -71,8 +70,8 @@ router.post('/addToCart', auth, async (req, res) => {
             cartDetails
         })
         newCart.save((error, data) => {
-            if (error) res.json({ status: false, error });
-            res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+            if (error) return res.json({ status: false, error });
+           return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
         })
     }
 
@@ -80,8 +79,8 @@ router.post('/addToCart', auth, async (req, res) => {
 
 router.get('/', auth, (req, res) => {
     Cart.findOne({ _customerId: req.customerId }).populate(populate).exec((error, data) => {
-        if (error) res.json({ status: false, error });
-        res.status(200).json({ status: true, message: 'Get customer cart successfully!', data })
+        if (error) return res.json({ status: false, error });
+        return res.status(200).json({ status: true, message: 'Get customer cart successfully!', data })
 
     })
 })
