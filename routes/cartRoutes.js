@@ -17,7 +17,7 @@ const populate = {
 }
 
 router.post('/addToCart', auth, async (req, res) => {
-   
+
     const customerCart = await Cart.findOne({ _customerId: req.customerId });
     const product = await Product.findById(req.body._productId);
 
@@ -27,7 +27,7 @@ router.post('/addToCart', auth, async (req, res) => {
         price: product.price,
         amount: product.price * req.body.quantity
     }
-  
+
     if (customerCart) {
         //find and update quantity if item exist already in cart
         Cart.findOneAndUpdate({
@@ -45,7 +45,7 @@ router.post('/addToCart', auth, async (req, res) => {
         }).populate(populate).exec().then((data, error) => {
             if (error) return res.json({ status: false, error });
             if (data) {
-               return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+                return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
             } else {
                 // if item doesnot exist in cart, push them to cart
                 Cart.findOneAndUpdate({
@@ -59,7 +59,7 @@ router.post('/addToCart', auth, async (req, res) => {
                 }, { new: true, }).populate(populate).exec().then((data, error) => {
                     if (error) return res.json({ status: false, error });
 
-                   return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+                    return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
 
                 })
             }
@@ -72,11 +72,57 @@ router.post('/addToCart', auth, async (req, res) => {
         })
         newCart.save((error, data) => {
             if (error) return res.json({ status: false, error });
-           return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
+            return res.status(200).json({ status: true, message: 'Add items to cart successfully!', data })
         })
     }
 
 });
+
+// update cart
+
+router.put('/updateCartItem', auth, async (req, res) => {
+    const _productId = req.body._productId;
+    const quantity = req.body.quantity;
+    const product = await Product.findById(_productId);
+    Cart.findOneAndUpdate({
+        _customerId: req.customerId,
+        'cartDetails._product': _productId
+    }, {
+        $set: {
+            'cartDetails.$.quantity': quantity,
+            'cartDetails.$.amount': quantity * product.price
+        }
+    },
+        { new: true }
+
+    ).populate(populate).exec().then((error, data) => {
+        if (error) return res.json({ status: false, error });
+
+        return res.status(200).json({ status: true, message: 'Item in cart has been updated successfully!', data })
+    });
+})
+
+// remove cart item
+
+router.put('/removeCartItem/:id', auth, async (req, res) => {
+    const _productId = req.params.id;
+
+    Cart.findOneAndUpdate({
+        _customerId: req.customerId,
+    }, {
+        $pull: {
+            cartDetails: {_product:_productId}
+        }
+    },
+        { new: true }
+
+    ).populate(populate).exec().then((error, data) => {
+        if (error) return res.json({ status: false, error });
+
+        return res.status(200).json({ status: true, message: 'Item in cart has been deleted successfully!', data })
+    })
+})
+
 
 router.get('/', auth, (req, res) => {
     Cart.findOne({ _customerId: req.customerId }).populate(populate).exec((error, data) => {

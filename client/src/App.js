@@ -12,7 +12,7 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import ResetPassword from "./containers/ResetPassword";
 import useCustomers from "./_actions/customerActions";
-
+import Cart from './containers/Cart';
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
@@ -108,6 +108,13 @@ function App() {
                   </Auth>
                 }
               />
+              <Route
+                path="/cart"
+                element={
+                  <Auth authRoute={true} redirectTo="/login">
+                    <Cart />
+                  </Auth>
+                }></Route>
               <Route
                 path="/login"
                 element={

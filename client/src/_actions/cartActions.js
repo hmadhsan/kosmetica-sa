@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_TO_CART, GET_CART_ITEM } from "./types";
+import { ADD_TO_CART, GET_CART_ITEM, UPDATE_CART_ITEM, REMOVE_CART_ITEM } from "./types";
 import { useDispatch } from "react-redux";
 
 const useCarts = () => {
@@ -19,6 +19,31 @@ const useCarts = () => {
             payload: result
         }
     }
+
+    // UPDATE
+    const updateCartItem = async (data) => {
+        const result = await axios.put('/carts/updateCartItem', data, config).then((res) => {
+            return res.data;
+        }).catch((err) => {
+            return err.response.data
+        })
+        return {
+            type: UPDATE_CART_ITEM,
+            payload: result
+        }
+    }
+
+    const removeCartItem = async (data) => {
+        const result = await axios.put(`/carts/removeCartItem/${productId}`, false, config).then((res) => {
+            return res.data;
+        }).catch((err) => {
+            return err.response.data
+        })
+        return {
+            type: REMOVE_CART_ITEM,
+            payload: result
+        }
+    }
     const getCartItems = () => {
         const result = axios.get('/carts', config).then((res) => {
             return res.data;
@@ -33,6 +58,8 @@ const useCarts = () => {
     return {
         addToCart,
         getCartItems,
+        updateCartItem,
+        removeCartItem
 
     }
 }
