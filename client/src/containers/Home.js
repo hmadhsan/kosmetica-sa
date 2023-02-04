@@ -86,8 +86,10 @@ function Home() {
     dispatch(addToCart(data)).then((res) => {
       if (res.payload.status) {
         message.success(res.payload.message);
+        console.log(res.payload.message)
       } else {
         message.error(res.error.message);
+        console.log(res.error.message)
       }
     })
   }
