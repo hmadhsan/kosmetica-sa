@@ -8,7 +8,7 @@ const populate = {
     path: 'cartDetails',
     populate: {
         path: '_product',
-        model: '_products',
+        model: 'products',
         populate: {
             path: '_category',
             model: 'categories'
@@ -29,22 +29,23 @@ router.post('/addToCart', auth, async (req, res) => {
     }
   
     if (customerCart) {
+        //find and update quantity if item exist already in cart
         Cart.findOneAndUpdate({
             _customerId: req.customerId,
             'cartDetails._product': req.body._productId
         }, {
             $inc: {
                 'cartDetails.$.quantity': req.body.quantity,
-                'cartDetails.$.amount': req.price * req.body.quantity
+                'cartDetails.$.amount': product.price * req.body.quantity
 
             },
         }, {
             new: true
 
         }).populate(populate).exec().then((data, error) => {
-            if (error) res.json({ status: false, error });
+            if (error) return res.json({ status: false, error });
             if (data) {
-                res.status(200).json({ status: true, message: 'Add items to cart successfully!' })
+               return res.status(200).json({ status: true, message: 'Add items to cart successfully!' })
             } else {
                 // if item doesnot exist in cart, push them to cart
                 Cart.findOneAndUpdate({
