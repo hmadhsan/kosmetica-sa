@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { PageHeader, Table, Space, Image, Typography, InputNumber } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { DeleteTwoTone, EditTwoTone } from '@antd/icons';
+import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined } from '@ant-design/icons"';
 const Cart = () => {
     const [editItem, setEditItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
@@ -15,7 +15,10 @@ const Cart = () => {
             <Table columns={columns} dataSource={cartItems} scroll={{ x: 1300 }} />
         )
     }
-
+///reset
+const handleReset = () => {
+    setEditItem(null)
+}
     const handleEdit = (item) => {
         setEditItem(item);
         setQuantity(item.quanity);
@@ -53,7 +56,15 @@ const Cart = () => {
             width: 100,
             //dataIndex: 'quantity',
             //key: 'quantity',
-            align: 'right'
+            align: 'right',
+            render: (item) => {
+                if (editItem?._product._id === item?._product._id) {
+                    return (
+                        <InputNumber size='small' min={1} value={quantity} onChange={handleQuantityChange} />
+                    )
+                }
+                return <span> {item?.quanity} </span>
+            }
         },
         {
             title: 'Amount ($)',
@@ -69,7 +80,14 @@ const Cart = () => {
             render: (item => {
                 return (
                     <>
-                        <EditTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='orange' onClick={() => handleEdit(item)} />
+                        {editItem?._product._id === item?._product?._id ? (
+                            <span style={{ marginRight: 4 }}>
+                                <SaveTwoTone style={{ marginRight: 4, fontSize: 16 }} />
+                                <ReloadOutlined style={{ color: 'green', fontSize: 16 }} onClick={handleReset} />
+
+                            </span>
+                        ) : <EditTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='red' onClick={() => handleEdit(item)} />
+                        }
                         <DeleteTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='red' onClick={() => handleRemove(item)} />
 
                     </>
