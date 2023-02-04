@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { PageHeader, Table, Space, Image, Typography, InputNumber } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined } from '@ant-design/icons"';
+import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined } from '@ant-design/icons';
 const Cart = () => {
     const [editItem, setEditItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
@@ -22,6 +22,10 @@ const handleReset = () => {
     const handleEdit = (item) => {
         setEditItem(item);
         setQuantity(item.quanity);
+    }
+
+    const handleQuantityChange =(value) => {
+        setQuantity(value);
     }
 
     const handleRemove = (item) => { }
@@ -63,7 +67,7 @@ const handleReset = () => {
                         <InputNumber size='small' min={1} value={quantity} onChange={handleQuantityChange} />
                     )
                 }
-                return <span> {item?.quanity} </span>
+                return <span> {item?.quantity} </span>
             }
         },
         {

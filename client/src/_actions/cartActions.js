@@ -33,7 +33,7 @@ const useCarts = () => {
         }
     }
 
-    const removeCartItem = async (data) => {
+    const removeCartItem = async (productId) => {
         const result = await axios.put(`/carts/removeCartItem/${productId}`, false, config).then((res) => {
             return res.data;
         }).catch((err) => {
