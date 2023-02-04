@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PageHeader, Table, Space, Image, Typography } from 'antd';
+import { PageHeader, Table, Space, Image, Typography, InputNumber } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { DeleteTwoTone, EditTwoTone } from '@antd/icons';
@@ -51,8 +51,8 @@ const Cart = () => {
         {
             title: 'Quantity',
             width: 100,
-            dataIndex: 'quantity',
-            key: 'quantity',
+            //dataIndex: 'quantity',
+            //key: 'quantity',
             align: 'right'
         },
         {
