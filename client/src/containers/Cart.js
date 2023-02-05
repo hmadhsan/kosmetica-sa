@@ -118,7 +118,7 @@ const Cart = () => {
                             </span>
                         ) : <EditTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='red' onClick={() => handleEdit(item)} />
                         }
-                        <DeleteTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='yellow' onClick={() => handleRemove(item)} />
+                        <DeleteTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='blue' onClick={() => handleRemove(item)} />
 
                     </>
                 )
