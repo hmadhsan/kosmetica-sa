@@ -21,8 +21,8 @@ const useCarts = () => {
     }
 
     // UPDATE
-    const updateCartItem =  (data) => {
-        const result =  axios.put('/carts/updateCartItem', data, config).then((res) => {
+    const updateCartItem = (data) => {
+        const result = axios.put('/carts/updateCartItem', data, config).then((res) => {
             return res.data;
         }).catch((err) => {
             return err.response.data
@@ -33,7 +33,7 @@ const useCarts = () => {
         }
     }
 
-    const removeCartItem =  (productId) => {
+    const removeCartItem = (productId) => {
         const result = axios.put(`/carts/removeCartItem/${productId}`, false, config).then((res) => {
             return res.data;
         }).catch((err) => {
