@@ -21,24 +21,24 @@ const useCarts = () => {
     }
 
     // UPDATE
-    const updateCartItem = async (data) => {
-        const result = await axios.put('/carts/updateCartItem', data, config).then((res) => {
+    const updateCartItem =  (data) => {
+        const result =  axios.put('/carts/updateCartItem', data, config).then((res) => {
             return res.data;
         }).catch((err) => {
             return err.response.data
-        })
+        });
         return {
             type: UPDATE_CART_ITEM,
             payload: result
         }
     }
 
-    const removeCartItem = async (productId) => {
-        const result = await axios.put(`/carts/removeCartItem/${productId}`, false, config).then((res) => {
+    const removeCartItem =  (productId) => {
+        const result = axios.put(`/carts/removeCartItem/${productId}`, false, config).then((res) => {
             return res.data;
         }).catch((err) => {
             return err.response.data
-        })
+        });
         return {
             type: REMOVE_CART_ITEM,
             payload: result

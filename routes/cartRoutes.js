@@ -90,17 +90,17 @@ router.put('/updateCartItem', auth, async (req, res) => {
     }, {
         $set: {
             'cartDetails.$.quantity': quantity,
-            'cartDetails.$.amount': quantity * product.price
+            'cartDetails.$amount': quantity * product.price
         }
     },
         { new: true }
 
-    ).populate(populate).exec().then((error, data) => {
-        if (error) return res.json({ status: false, error });
+    ).populate(populate).exec((error, data) => {
+        if (error) return res.status(400).json({ status: false, error });
 
-        return res.status(200).json({ status: true, message: 'Item in cart has been updated successfully!', data })
+        return res.status(200).json({ status: true, message: 'Item in cart has been updated successfully!', data });
     });
-})
+});
 
 // remove cart item
 
@@ -116,12 +116,12 @@ router.put('/removeCartItem/:id', auth, async (req, res) => {
     },
         { new: true }
 
-    ).populate(populate).exec().then((error, data) => {
-        if (error) return res.json({ status: false, error });
+    ).populate(populate).exec((error, data) => {
+        if (error) return res.status(400).json({ status: false, error });
 
-        return res.status(200).json({ status: true, message: 'Item in cart has been deleted successfully!', data })
-    })
-})
+        return res.status(200).json({ status: true, message: 'Item in cart has been removed successfully!', data })
+    });
+});
 
 
 router.get('/', auth, (req, res) => {

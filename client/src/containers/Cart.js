@@ -32,10 +32,9 @@ const Cart = () => {
     }
 
     const handleRemove = (item) => {
-        dispatch(removeCartItem(item._productId._id)).then(res => {
+        dispatch(removeCartItem(item?._product?._id)).then(res => {
             if (res.payload.status) {
                 message.success(res.payload.message);
-               
             } else {
                 message.error(res.payload.message);
             }
@@ -45,8 +44,8 @@ const Cart = () => {
     const handleUpdateCartItem = (item) => {
         const data = {
             _productId: item?._product?._id,
-            quantity
-        }
+            quantity,
+        };
         dispatch(updateCartItem(data)).then((res) => {
             console.log(data)
             if (res.payload.status) {
