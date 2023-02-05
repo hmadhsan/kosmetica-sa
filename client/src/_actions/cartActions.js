@@ -69,7 +69,8 @@ const useCarts = () => {
         addToCart,
         getCartItems,
         updateCartItem,
-        removeCartItem
+        removeCartItem,
+        clearCart
 
     }
 }

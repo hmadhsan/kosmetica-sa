@@ -13,7 +13,7 @@ const Cart = () => {
     const [quantity, setQuantity] = useState(null);
 
     const navigate = useNavigate();
-    const { updateCartItem, removeCartItem } = useCarts();
+    const { updateCartItem, removeCartItem, clearCart } = useCarts();
     const dispatch = useDispatch();
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
     const auth = useSelector(state => state.custom.auth);
@@ -58,6 +58,18 @@ const Cart = () => {
                 setEditItem(null)
             } else {
                 message.error(res.payload.message);
+            }
+        })
+    }
+
+    //handle payout
+
+    const handlePayout = (token, total) => {
+        dispatch(checkOut({ token, total })).then(res => {
+            if (res.payload.status) {
+                clearCart();
+            }else{
+                message.error(res.payload.message)
             }
         })
     }
