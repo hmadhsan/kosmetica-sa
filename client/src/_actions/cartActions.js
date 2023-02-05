@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_TO_CART, GET_CART_ITEM, UPDATE_CART_ITEM, REMOVE_CART_ITEM } from "./types";
+import { ADD_TO_CART, GET_CART_ITEM, UPDATE_CART_ITEM, REMOVE_CART_ITEM, CLEAR_CART_ITEM } from "./types";
 import { useDispatch } from "react-redux";
 
 const useCarts = () => {
@@ -55,6 +55,16 @@ const useCarts = () => {
             payload: result
         })
     }
+    
+
+    //clear cart
+    
+    const clearCart = () => {
+        dispatch({
+            type: CLEAR_CART_ITEM
+        })
+    }
+
     return {
         addToCart,
         getCartItems,

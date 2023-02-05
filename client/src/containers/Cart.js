@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
-import { PageHeader, Table, Space, Image, Typography, InputNumber, message } from 'antd';
+import { PageHeader, Table, Space, Image, Typography, InputNumber, message, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined } from '@ant-design/icons';
+import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined, DollarOutlined } from '@ant-design/icons';
 import useCarts from '../_actions/cartActions';
+import useOrders from '../_actions/orderActions';
+import { sumBy } from 'lodash';
+import StripeCheckOut from 'react-stripe-checkout';
+
 const Cart = () => {
     const [editItem, setEditItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
@@ -12,7 +16,8 @@ const Cart = () => {
     const { updateCartItem, removeCartItem } = useCarts();
     const dispatch = useDispatch();
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
-
+    const auth = useSelector(state => state.custom.auth);
+    const { checkOut } = useOrders();
     const renderCartItems = () => {
         return (
             <Table columns={columns} dataSource={cartItems} scroll={{ x: 1300 }} />
@@ -124,12 +129,34 @@ const Cart = () => {
                 )
             }
         }
-    ]
+    ];
+
+    const renderCheckOut = () => {
+        const total = sumBy(cartItems, (item) => item.amount);
+        if (cartItems?.length > 0) {
+            return (
+                <center>
+                    <p> Total amount: ${total}</p>
+                    <StripeCheckOut name='payment' email={auth?.data?.email}
+                        description='Payment for products' amount={total * 100}
+                        token={(token) => handlePayout(token, total)}
+                        stripeKey='sk_test_51MYC5cGF1Zw88Jx99hOYtSuUaViGW9oMnlm9N5QPszNPJ02m539jULv1GO3bhp3vrKu43SiIJ9c7DBnFaI06tPRh00ouYGYP8p'
+                    >
+                        <Button type='primary' icon={<DollarOutlined />} >Checkout</Button>
+
+                    </StripeCheckOut>
+                </center>
+            )
+        }
+    }
+
+
     return (
         <>
             <PageHeader title='Your Cart' onBack={() => navigate(-1)} />
             <div className='page-wrapper'>
                 {renderCartItems()}
+                {renderCheckOut()}
             </div>
         </>
     )

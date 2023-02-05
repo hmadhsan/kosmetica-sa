@@ -21,3 +21,6 @@ export const GET_CART_ITEM = "GET_CART_ITEM";
 
 export const CLEAR_CART_ITEM = "CLEAR_CART_ITEM";
 
+export const CHECKOUT = 'CHECKOUT';
+
+export const GET_ORDER_HISTORY = 'GET_ORDER_HISTORY';

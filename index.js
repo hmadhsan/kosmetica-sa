@@ -21,6 +21,8 @@ app.use("/customers", require("./routes/customerRoutes"))
 app.use("/categories", require("./routes/categoryRoutes"))
 app.use("/products", require("./routes/productRoutes"))
 app.use('/carts', require('./routes/cartRoutes'));
+app.use('/orders', require('./routes/orderRoutes'));
+
 
 
 const PORT = process.env.PORT || 4000;
