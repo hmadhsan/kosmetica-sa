@@ -3,6 +3,7 @@ import { PageHeader, Table, Space, Image, Typography, InputNumber } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined } from '@ant-design/icons';
+import useCarts from '../_actions/cartActions';
 const Cart = () => {
     const [editItem, setEditItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
@@ -15,16 +16,16 @@ const Cart = () => {
             <Table columns={columns} dataSource={cartItems} scroll={{ x: 1300 }} />
         )
     }
-///reset
-const handleReset = () => {
-    setEditItem(null)
-}
+    ///reset
+    const handleReset = () => {
+        setEditItem(null)
+    }
     const handleEdit = (item) => {
         setEditItem(item);
-        setQuantity(item.quanity);
+        setQuantity(item.quantity);
     }
 
-    const handleQuantityChange =(value) => {
+    const handleQuantityChange = (value) => {
         setQuantity(value);
     }
 
@@ -62,7 +63,7 @@ const handleReset = () => {
             //key: 'quantity',
             align: 'right',
             render: (item) => {
-                if (editItem?._product._id === item?._product._id) {
+                if (editItem?._product?._id === item?._product?._id) {
                     return (
                         <InputNumber size='small' min={1} value={quantity} onChange={handleQuantityChange} />
                     )
@@ -84,7 +85,7 @@ const handleReset = () => {
             render: (item) => {
                 return (
                     <>
-                        {editItem?._product._id === item?._product?._id ? (
+                        {editItem?._product?._id === item?._product?._id ? (
                             <span style={{ marginRight: 4 }}>
                                 <SaveTwoTone style={{ marginRight: 4, fontSize: 16 }} />
                                 <ReloadOutlined style={{ color: 'green', fontSize: 16 }} onClick={handleReset} />
