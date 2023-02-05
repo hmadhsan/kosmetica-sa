@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { PageHeader, Table, Space, Image, Typography, InputNumber } from 'antd';
+import { PageHeader, Table, Space, Image, Typography, InputNumber, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { DeleteTwoTone, EditTwoTone, SaveTwoTone, ReloadOutlined } from '@ant-design/icons';
 import useCarts from '../_actions/cartActions';
 const Cart = () => {
@@ -9,6 +9,8 @@ const Cart = () => {
     const [quantity, setQuantity] = useState(null);
 
     const navigate = useNavigate();
+    const { updateCartItem, removeCartItem } = useCarts();
+    const dispatch = useDispatch();
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
 
     const renderCartItems = () => {
@@ -29,8 +31,32 @@ const Cart = () => {
         setQuantity(value);
     }
 
-    const handleRemove = (item) => { }
+    const handleRemove = (item) => {
+        dispatch(removeCartItem(item._productId._id)).then(res => {
+            if (res.payload.status) {
+                message.success(res.payload.message);
+               
+            } else {
+                message.error(res.payload.message);
+            }
+        })
+    }
 
+    const handleUpdateCartItem = (item) => {
+        const data = {
+            _productId: item?._product?._id,
+            quantity
+        }
+        dispatch(updateCartItem(data)).then((res) => {
+            console.log(data)
+            if (res.payload.status) {
+                message.success(res.payload.message);
+                setEditItem(null)
+            } else {
+                message.error(res.payload.message);
+            }
+        })
+    }
     const columns = [
         {
             title: 'Product',
@@ -87,13 +113,13 @@ const Cart = () => {
                     <>
                         {editItem?._product?._id === item?._product?._id ? (
                             <span style={{ marginRight: 4 }}>
-                                <SaveTwoTone style={{ marginRight: 4, fontSize: 16 }} />
+                                <SaveTwoTone style={{ marginRight: 4, fontSize: 16 }} onClick={() => handleUpdateCartItem(item)} />
                                 <ReloadOutlined style={{ color: 'green', fontSize: 16 }} onClick={handleReset} />
 
                             </span>
                         ) : <EditTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='red' onClick={() => handleEdit(item)} />
                         }
-                        <DeleteTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='red' onClick={() => handleRemove(item)} />
+                        <DeleteTwoTone style={{ marginRight: 4, fontSize: 16 }} twoToneColor='yellow' onClick={() => handleRemove(item)} />
 
                     </>
                 )
