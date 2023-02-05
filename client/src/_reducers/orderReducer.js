@@ -18,7 +18,7 @@ const orderReducer = (state = initialState, action) => {
             }
 
         default:
-            break;
+          return state;
     }
 }
 

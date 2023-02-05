@@ -13,11 +13,12 @@ const Cart = () => {
     const [quantity, setQuantity] = useState(null);
 
     const navigate = useNavigate();
-    const { updateCartItem, removeCartItem, clearCart } = useCarts();
     const dispatch = useDispatch();
+
+    const { updateCartItem, removeCartItem, clearCart } = useCarts();
+    const { checkout } = useOrders();
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
-    const auth = useSelector(state => state.custom.auth);
-    const { checkOut } = useOrders();
+    const auth = useSelector((state) => state.customer.auth);
     const renderCartItems = () => {
         return (
             <Table columns={columns} dataSource={cartItems} scroll={{ x: 1300 }} />
@@ -65,7 +66,7 @@ const Cart = () => {
     //handle payout
 
     const handlePayout = (token, total) => {
-        dispatch(checkOut({ token, total })).then(res => {
+        dispatch(checkout({ token, total })).then(res => {
             if (res.payload.status) {
                 clearCart();
             }else{
