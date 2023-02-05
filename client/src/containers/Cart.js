@@ -81,7 +81,7 @@ const handleReset = () => {
             title: 'Actions',
             fixed: 'right',
             width: 100,
-            render: (item => {
+            render: (item) => {
                 return (
                     <>
                         {editItem?._product._id === item?._product?._id ? (
@@ -96,7 +96,7 @@ const handleReset = () => {
 
                     </>
                 )
-            })
+            }
         }
     ]
     return (
