@@ -16,7 +16,8 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const { updateCartItem, removeCartItem, clearCart } = useCarts();
-    //const { checkout } = useOrders();
+    const { checkout } = useOrders();
+
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
     const auth = useSelector((state) => state.customer.auth);
     const renderCartItems = () => {
@@ -66,10 +67,13 @@ const Cart = () => {
     //handle payout
 
     const handlePayout = (token, total) => {
-        dispatch(useOrders.checkout({ token, total })).then(res => {
+        console.log('hellllllllllllo', token)
+        console.log('hellllllllllllo', total)
+
+        dispatch(checkout({ token, total })).then(res => {
             if (res.payload.status) {
                 clearCart();
-            }else{
+            } else {
                 message.error(res.payload.message)
             }
         })

@@ -1,16 +1,17 @@
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import {CHECKOUT, GET_ORDER_HISTORY} from './types';
+import { CHECKOUT, GET_ORDER_HISTORY } from './types';
 
-const useOrders = () => {
+export default function useOrders() {
     const token = localStorage.getItem("customerToken");
     const config = {
         headers: { Authorization: `Bearer ${token}` },
     };
 
     const dispatch = useDispatch();
-    const checkout = async (data) => {
-        const result = await axios.post('/orders/checkout', data, config).then((res) => {
+
+    const checkout = (data) => {
+        const result = axios.post('/orders/checkout', data, config).then((res) => {
             return res.data;
         }).catch((err) => {
             return err.response.data
@@ -21,8 +22,8 @@ const useOrders = () => {
         }
     }
 
-    const getOrderHistory = async () => {
-        const result = await axios.get('/orders/orderHistory', config).then((res) => {
+    const getOrderHistory = () => {
+        const result = axios.get('/orders/orderHistory', config).then((res) => {
             return res.data;
         }).catch((err) => {
             return err.response.data
@@ -37,5 +38,3 @@ const useOrders = () => {
         }
     }
 }
-
-export default useOrders;
