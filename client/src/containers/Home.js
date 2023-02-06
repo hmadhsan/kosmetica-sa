@@ -9,6 +9,7 @@ import banner3 from "../assets/images/img-3.jpg";
 import useProducts from '../_actions/productActions';
 import ProductFilters from '../components/Filters/ProductFilters';
 import useCarts from '../_actions/cartActions';
+import Categories from '../components/Categories';
 const contentStyle = {
   margin: 0,
   height: '600px',
@@ -86,10 +87,8 @@ function Home() {
     dispatch(addToCart(data)).then((res) => {
       if (res.payload.status) {
         message.success(res.payload.message);
-        console.log(res.payload.message)
       } else {
-        message.error(res.error.message);
-        console.log(res.error.message)
+        message.error(res.error.message)
       }
     })
   }
@@ -150,7 +149,7 @@ function Home() {
 
   return (
     <div>
-      {/* {renderImages()} */}
+      {renderImages()}
       {renderFilters()}
       {renderProductList()}
       <div className='product-load-more'>
@@ -164,8 +163,6 @@ function Home() {
         </>}
       </div>
       <ProductModalDetails visible={showModal} product={selectedProduct} onCancel={handleCancelProd} />
-
-      
     </div>
 
   )

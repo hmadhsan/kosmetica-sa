@@ -1,5 +1,5 @@
 import { UserOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Layout, Menu, message, Badge, Carousel } from "antd";
+import { Layout, Menu, message, Badge } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { sumBy } from 'lodash'
@@ -12,27 +12,10 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import ResetPassword from "./containers/ResetPassword";
 import useCustomers from "./_actions/customerActions";
-import Cart from './containers/Cart';
-import Categories from './components/Categories';
-import About from './components/About';
-import Gallery from './components/Gallery';
-import Team from './components/Teams';
-import Services from './components/Services';
-import Foot from './components/Footer';
-import banner1 from './images/img-1.jpg';
-import banner2 from "./images/img-2.jpg";
-import banner3 from "./images/img-3.jpg";
+import Cart from "./containers/Cart";
+
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
-const contentStyle = {
-  margin: 0,
-  height: '600px',
-  width: "100%",
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
 
 function App() {
   let auth = useSelector((state) => state.customer.auth);
@@ -50,29 +33,10 @@ function App() {
       });
     }
   };
-
-  const renderImages = () => {
-    return (
-      <Carousel autoplay>
-        <div>
-          <img src={banner1} style={contentStyle} />
-        </div>
-        <div>
-          <img src={banner2} style={contentStyle} />
-        </div>
-        <div>
-          <img src={banner3} style={contentStyle} />
-        </div>
-
-      </Carousel>
-    )
-  }
   const renderHeader = () => {
     const fullName = `${auth?.data?.firstName} ${auth?.data?.lastName}`;
     const itemCount = sumBy(cartItems, (item) => item?.quantity);
     return (
-      <>
-
       <Header className="app-header">
         <img src={logo} className="app-logo" />
         <Menu
@@ -117,8 +81,6 @@ function App() {
           )}
         </Menu>
       </Header>
-      {renderImages()}
-      </>
     );
   };
 
@@ -126,7 +88,6 @@ function App() {
     <BrowserRouter>
       <Layout>
         {renderHeader()}
-     
         <Content className="app-content">
           <div className="app-wrapper">
             <Routes>
@@ -141,20 +102,17 @@ function App() {
               <Route path="/forgotPassword" element={<ForgotPassord />} />
               <Route path="/resetPassword/:token" element={<ResetPassword />} />
               <Route
-                path="/changePassword"
+                // path="/changePassword"
                 element={
                   <Auth authRoute={true} redirectTo="/login">
                     <ChangePassword />
                   </Auth>
                 }
               />
-              <Route
-                path="/cart"
-                element={
-                  <Auth authRoute={true} redirectTo="/login">
-                    <Cart />
-                  </Auth>
-                }></Route>
+              <Route path="/cart" element={<Auth authRoute={true} redirectTo='/login'>
+                <Cart />
+                </Auth>} />
+               
               <Route
                 path="/login"
                 element={
@@ -171,17 +129,13 @@ function App() {
                   </Auth>
                 }
               />
+
+
             </Routes>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>Dev It Media @2022</Footer>
       </Layout>
-      <Categories />
-      <About />
-      <Gallery />
-      <Team />
-      <Services />
-      <Foot />
     </BrowserRouter>
   );
 }
