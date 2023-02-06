@@ -3,6 +3,7 @@ import { Button, Row, InputNumber, Input, Slider, Card, Space, Typography, Col, 
 import { CloseCircleOutlined, SearchOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import useProducts from '../../_actions/productActions';
+// import '../../App.css'
 const { Text } = Typography
 const ProductFilters = (props) => {
     const { initialFilters, onSearch, onClear } = props;
@@ -55,8 +56,16 @@ const ProductFilters = (props) => {
         getCategoryList();
     }, [])
     return (
+        <>
+                     <div className="heading">
+                        <h1>featured products</h1>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
+                            minus optio?</p>
+                    </div>
         <Row gutter={[8, 8]} style={{ padding: 10 }}>
+
             <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={3} >
+                
                 <Input placeholder='Enter keyword' onChange={handleKeywordChange} />
             </Col>
             <Col xs={24} sm={12} md={12} lg={6} xl={5} xxl={5} >
@@ -103,6 +112,7 @@ const ProductFilters = (props) => {
 
             </Col>
         </Row>
+        </>
     )
 }
 

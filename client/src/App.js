@@ -3,7 +3,7 @@ import { Layout, Menu, message, Badge } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { sumBy } from 'lodash'
-import logo from "./assets/images/logo.png";
+import logo from "./assets/images/logo1.png";
 import Auth from "./Auth";
 import ChangePassword from "./containers/ChangePassword";
 import ForgotPassord from "./containers/ForgotPassord";

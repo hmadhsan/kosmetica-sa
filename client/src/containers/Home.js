@@ -9,7 +9,7 @@ import banner3 from "../assets/images/img-3.jpg";
 import useProducts from '../_actions/productActions';
 import ProductFilters from '../components/Filters/ProductFilters';
 import useCarts from '../_actions/cartActions';
-import Categories from '../components/Categories';
+// import Categories from '../components/Categories';
 const contentStyle = {
   margin: 0,
   height: '600px',
