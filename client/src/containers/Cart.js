@@ -67,14 +67,11 @@ const Cart = () => {
     //handle payout
 
     const handlePayout = (token, total) => {
-        console.log('hellllllllllllo', token)
-        console.log('hellllllllllllo', total)
-
         dispatch(checkout({ token, total })).then(res => {
             if (res.payload.status) {
                 clearCart();
             } else {
-                message.error(res.payload.message)
+                message.error('this is error')
             }
         })
     }

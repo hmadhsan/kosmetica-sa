@@ -19,8 +19,8 @@ export default function useOrders() {
         return {
             type: CHECKOUT,
             payload: result
-        }
-    }
+        };
+    };
 
     const getOrderHistory = () => {
         const result = axios.get('/orders/orderHistory', config).then((res) => {
@@ -32,9 +32,10 @@ export default function useOrders() {
             type: GET_ORDER_HISTORY,
             payload: result
         })
-        return {
-            checkout,
-            getOrderHistory
-        }
+
+    }
+    return {
+        checkout,
+        getOrderHistory
     }
 }

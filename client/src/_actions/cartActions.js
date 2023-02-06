@@ -53,18 +53,17 @@ const useCarts = () => {
         dispatch({
             type: GET_CART_ITEM,
             payload: result
-        })
+        });
     }
     
 
     //clear cart
     
-    const clearCart = () => {
-        dispatch({
-            type: CLEAR_CART_ITEM
-        })
-    }
-
+ const clearCart = () => {
+    dispatch({
+        type: CLEAR_CART_ITEM
+    })
+ }
     return {
         addToCart,
         getCartItems,

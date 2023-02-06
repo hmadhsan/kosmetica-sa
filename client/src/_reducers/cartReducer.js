@@ -23,10 +23,10 @@ const cartReducer = (state = initialState, action) => {
             return {
                 cartItems: action.payload.data,
             }
-            case CLEAR_CART_ITEM:
-                return {
-                    cartItems: [],
-                }
+        case CLEAR_CART_ITEM:
+            return {
+                cartItems: [],
+            };
         default: return state;
     }
 }
