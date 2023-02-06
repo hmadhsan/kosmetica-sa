@@ -150,7 +150,7 @@ function Home() {
 
   return (
     <div>
-      {renderImages()}
+      {/* {renderImages()} */}
       {renderFilters()}
       {renderProductList()}
       <div className='product-load-more'>
@@ -164,6 +164,8 @@ function Home() {
         </>}
       </div>
       <ProductModalDetails visible={showModal} product={selectedProduct} onCancel={handleCancelProd} />
+
+      
     </div>
 
   )

@@ -23,6 +23,7 @@
     "mongoose": "^6.1.5",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.20",
+    "react-grid-carousel": "^1.0.1",
     "stripe": "^11.9.1"
   }
 }
