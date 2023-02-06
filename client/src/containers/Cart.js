@@ -16,7 +16,7 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const { updateCartItem, removeCartItem, clearCart } = useCarts();
-    const { checkout } = useOrders();
+    //const { checkout } = useOrders();
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
     const auth = useSelector((state) => state.customer.auth);
     const renderCartItems = () => {
@@ -66,7 +66,7 @@ const Cart = () => {
     //handle payout
 
     const handlePayout = (token, total) => {
-        dispatch(checkout({ token, total })).then(res => {
+        dispatch(useOrders.checkout({ token, total })).then(res => {
             if (res.payload.status) {
                 clearCart();
             }else{
@@ -153,7 +153,7 @@ const Cart = () => {
                     <StripeCheckOut name='payment' email={auth?.data?.email}
                         description='Payment for products' amount={total * 100}
                         token={(token) => handlePayout(token, total)}
-                        stripeKey='sk_test_51MYC5cGF1Zw88Jx99hOYtSuUaViGW9oMnlm9N5QPszNPJ02m539jULv1GO3bhp3vrKu43SiIJ9c7DBnFaI06tPRh00ouYGYP8p'
+                        stripeKey='pk_test_51MYC5cGF1Zw88Jx9ymSxF32SQLH0sdva8PZBcpKE7eqxM6vDWdh9wbPPigEVLOVHFviYmGec5IjHM1qic6n3Wqqp00FqS1zsKg'
                     >
                         <Button type='primary' icon={<DollarOutlined />} >Checkout</Button>
 
