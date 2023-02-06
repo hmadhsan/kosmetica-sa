@@ -13,6 +13,12 @@ import Register from "./containers/Register";
 import ResetPassword from "./containers/ResetPassword";
 import useCustomers from "./_actions/customerActions";
 import Cart from './containers/Cart';
+import Categories from './components/Categories';
+import About from './components/About';
+import Gallery from './components/Gallery';
+import Team from './components/Teams';
+import Services from './components/Services';
+import Foot from './components/Footer';
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
@@ -36,6 +42,7 @@ function App() {
     const fullName = `${auth?.data?.firstName} ${auth?.data?.lastName}`;
     const itemCount = sumBy(cartItems, (item) => item?.quantity);
     return (
+      <>
       <Header className="app-header">
         <img src={logo} className="app-logo" />
         <Menu
@@ -80,6 +87,8 @@ function App() {
           )}
         </Menu>
       </Header>
+
+      </>
     );
   };
 
@@ -87,6 +96,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         {renderHeader()}
+     
         <Content className="app-content">
           <div className="app-wrapper">
             <Routes>
@@ -136,6 +146,12 @@ function App() {
         </Content>
         <Footer style={{ textAlign: "center" }}>Dev It Media @2022</Footer>
       </Layout>
+      <Categories />
+      <About />
+      <Gallery />
+      <Team />
+      <Services />
+      <Foot />
     </BrowserRouter>
   );
 }
