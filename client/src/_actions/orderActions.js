@@ -15,7 +15,7 @@ export default function useOrders() {
             return res.data;
         }).catch((err) => {
             return err.response.data
-        })
+        });
         return {
             type: CHECKOUT,
             payload: result
