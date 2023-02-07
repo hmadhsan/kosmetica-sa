@@ -3,7 +3,7 @@ import { Layout, Menu, message, Badge } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { sumBy } from 'lodash'
-import logo from "./assets/images/logo1.png";
+import logo from "./assets/images/logo.PNG";
 import Auth from "./Auth";
 import ChangePassword from "./containers/ChangePassword";
 import ForgotPassord from "./containers/ForgotPassord";
@@ -12,8 +12,13 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import ResetPassword from "./containers/ResetPassword";
 import useCustomers from "./_actions/customerActions";
+import Categories from './components/Categories';
 import Cart from "./containers/Cart";
-
+import About from './components/About';
+import Gallery  from "./components/Gallery";
+import Teams from './components/Teams';
+import Services from './components/Services';
+import Foot from './components/Footer';
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
@@ -134,8 +139,13 @@ function App() {
             </Routes>
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>Dev It Media @2022</Footer>
       </Layout>
+      <Categories />
+      <About />
+      <Gallery/>
+      <Teams />
+      <Services />
+      <Foot />
     </BrowserRouter>
   );
 }
