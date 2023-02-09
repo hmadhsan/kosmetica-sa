@@ -15,14 +15,14 @@ const OrderHistory = () => {
                 columns={columns}
                 dataSource={orderHistory}
                 rowKey='_id'
-                expandable={{expendedRowRender}} />
+                expandable={{ expandedRowRender }} />
         );
     };
 
     const columns = [
-        { title: 'ID', key: '_id', dataIndex: '_id' },
+        { title: 'ID', dataIndex: '_id', key: '_id' },
         {
-            title: 'Date', key: 'orderDate', dataIndex: 'orderDate', align: 'center',
+            title: 'Date', dataIndex: 'orderDate',  key: 'orderDate', align: 'center',
             render: (value) => {
                 const dateFormat = moment(value).format('DD-MM-YYYY');
                 return dateFormat;
@@ -31,7 +31,8 @@ const OrderHistory = () => {
         { title: 'Total Amount ($)', key: 'totalAmount', dataIndex: 'totalAmount', align: 'right' }
     ];
 
-    const expendedRowRender = (record) => {
+    const expandedRowRender = (record) => {
+        console.log('order record', record)
         const columns = [
             {
                 title: 'Product', dataIndex: '_product', key: '_product', render: (item) => {
@@ -43,7 +44,7 @@ const OrderHistory = () => {
             { title: 'Amount ($)', dataIndex: 'amount', key: 'amount', align: 'right' },
         ];
         return (
-        <Table columns={columns} dataSource={record?.orderDetails} pagination={false} />
+            <Table columns={columns} dataSource={record?.orderDetails} pagination={false} />
         )
     }
 
@@ -51,6 +52,7 @@ const OrderHistory = () => {
     useEffect(() => {
         getOrderHistory();
     }, []);
+    
     return (
         <>
             <PageHeader title='Your Order History' onBack={() => navigate(-1)} />
