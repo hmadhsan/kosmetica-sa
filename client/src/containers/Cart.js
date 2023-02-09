@@ -7,19 +7,18 @@ import useCarts from '../_actions/cartActions';
 import useOrders from '../_actions/orderActions';
 import { sumBy } from 'lodash';
 import StripeCheckOut from 'react-stripe-checkout';
-
+import OrderResultModal from '../components/modal/OrderResultModal';
 const Cart = () => {
     const [editItem, setEditItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const { updateCartItem, removeCartItem, clearCart } = useCarts();
     const { checkout } = useOrders();
-
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
     const auth = useSelector((state) => state.customer.auth);
+    const [shoeResultModal, setShowResultModal] = useState(false);
+
     const renderCartItems = () => {
         return (
             <Table columns={columns} dataSource={cartItems} scroll={{ x: 1300 }} />
@@ -70,6 +69,7 @@ const Cart = () => {
         dispatch(checkout({ token, total })).then(res => {
             if (res.payload.status) {
                 clearCart();
+                setShowResultModal(true)
             } else {
                 message.error('this is error')
             }
@@ -171,6 +171,7 @@ const Cart = () => {
             <div className='page-wrapper'>
                 {renderCartItems()}
                 {renderCheckOut()}
+                <OrderResultModal visible={shoeResultModal} onCancel={() => setShowResultModal(false)} />
             </div>
         </>
     )
