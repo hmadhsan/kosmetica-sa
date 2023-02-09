@@ -3,7 +3,7 @@ import { PageHeader, Table } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useOrders from '../_actions/orderActions';
-import moment from 'moment'
+import moment from 'moment';
 const OrderHistory = () => {
     const navigate = useNavigate();
     const { getOrderHistory } = useOrders();
@@ -37,11 +37,11 @@ const OrderHistory = () => {
                     return item?.name
                 }
             },
-            { title: 'Price', dataIndex: 'price', key: 'price', align: 'right' },
-            { title: 'Quanity', dataIndex: 'quanity', key: 'quanity', align: 'right' },
+            { title: 'Price ($)', dataIndex: 'price', key: 'price', align: 'right' },
+            { title: 'Quanity', dataIndex: 'quantity', key: 'quantity', align: 'right' },
             { title: 'Amount ($)', dataIndex: 'amount', key: 'amount', align: 'right' },
         ];
-        return  (<Table columns={columns} dataSource={record?.orderDetails} pagination={false} /> )
+        return (<Table columns={columns} dataSource={record?.orderDetails} pagination={false} />)
     }
 
     //get order history
