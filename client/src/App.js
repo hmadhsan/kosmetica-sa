@@ -19,6 +19,7 @@ import Gallery  from "./components/Gallery";
 import Teams from './components/Teams';
 import Services from './components/Services';
 import Foot from './components/Footer';
+import OrderHistory from "./containers/OrderHistory";
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
@@ -68,6 +69,11 @@ function App() {
                 icon={<UserOutlined />}
                 title={`Hi ${fullName}`}
               >
+               <Menu.Item key='orderHistory'>
+                <Link to='orderHistory'>
+                  Order History
+                </Link>
+               </Menu.Item>
                 <Menu.Item key="changePassword">
                   <Link to="changePassword">Change Password</Link>
                 </Menu.Item>
@@ -116,6 +122,9 @@ function App() {
               />
               <Route path="/cart" element={<Auth authRoute={true} redirectTo='/login'>
                 <Cart />
+                </Auth>} />
+                <Route path="/orderHistory" element={<Auth authRoute={true} redirectTo='/login'>
+                <OrderHistory />
                 </Auth>} />
                
               <Route
