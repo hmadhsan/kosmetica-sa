@@ -26,7 +26,7 @@ router.post('/checkout', auth, (req, res) => {
         const totalAmount = req.body.total;
         const charge = await stripe.charges.create({
             amount: totalAmount * 100,
-            curreny: 'used',
+            currency: 'usd',
             description: 'Payment for product',
             source: token.id
         })
