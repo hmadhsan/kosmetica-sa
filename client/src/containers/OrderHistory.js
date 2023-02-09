@@ -8,15 +8,16 @@ const OrderHistory = () => {
     const navigate = useNavigate();
     const { getOrderHistory } = useOrders();
     const orderHistory = useSelector(state => state.order?.orderHistory);
+
     const renderOrderList = () => {
         return (
             <Table
                 columns={columns}
                 dataSource={orderHistory}
                 rowKey='_id'
-                expandable={expendedRowRender} />
-        )
-    }
+                expandable={{expendedRowRender}} />
+        );
+    };
 
     const columns = [
         { title: 'ID', key: '_id', dataIndex: '_id' },
@@ -33,12 +34,12 @@ const OrderHistory = () => {
     const expendedRowRender = (record) => {
         const columns = [
             {
-                title: 'Products', dataIndex: '_product', key: '_product', render: (item) => {
+                title: 'Product', dataIndex: '_product', key: '_product', render: (item) => {
                     return item?.name
                 }
             },
             { title: 'Price ($)', dataIndex: 'price', key: 'price', align: 'right' },
-            { title: 'Quanity', dataIndex: 'quantity', key: 'quantity', align: 'right' },
+            { title: 'Quantity', dataIndex: 'quantity', key: 'quantity', align: 'right' },
             { title: 'Amount ($)', dataIndex: 'amount', key: 'amount', align: 'right' },
         ];
         return (<Table columns={columns} dataSource={record?.orderDetails} pagination={false} />)
