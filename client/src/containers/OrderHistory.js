@@ -7,7 +7,7 @@ import moment from 'moment';
 const OrderHistory = () => {
     const navigate = useNavigate();
     const { getOrderHistory } = useOrders();
-    const orderHistory = useSelector(state => state.order?.orderHistory);
+    const orderHistory = useSelector((state) => state.order?.orderHistory);
 
     const renderOrderList = () => {
         return (
@@ -42,7 +42,9 @@ const OrderHistory = () => {
             { title: 'Quantity', dataIndex: 'quantity', key: 'quantity', align: 'right' },
             { title: 'Amount ($)', dataIndex: 'amount', key: 'amount', align: 'right' },
         ];
-        return (<Table columns={columns} dataSource={record?.orderDetails} pagination={false} />)
+        return (
+        <Table columns={columns} dataSource={record?.orderDetails} pagination={false} />
+        )
     }
 
     //get order history

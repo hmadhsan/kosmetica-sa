@@ -17,7 +17,7 @@ const Cart = () => {
     const { checkout } = useOrders();
     const cartItems = useSelector((state => state.cart.cartItems?.cartDetails));
     const auth = useSelector((state) => state.customer.auth);
-    const [shoeResultModal, setShowResultModal] = useState(false);
+    const [showResultModal, setShowResultModal] = useState(false);
 
     const renderCartItems = () => {
         return (
@@ -171,7 +171,7 @@ const Cart = () => {
             <div className='page-wrapper'>
                 {renderCartItems()}
                 {renderCheckOut()}
-                <OrderResultModal visible={shoeResultModal} onCancel={() => setShowResultModal(false)} />
+                <OrderResultModal visible={showResultModal} onCancel={() => setShowResultModal(false)} />
             </div>
         </>
     )
