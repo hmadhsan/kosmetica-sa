@@ -1,2 +1,1 @@
 # Kosmetica
-Shopping web app
