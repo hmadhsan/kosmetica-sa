@@ -89,7 +89,7 @@ router.put('/updateCartItem', auth, async (req, res) => {
     }, {
         $set: {
             'cartDetails.$.quantity': quantity,
-            'cartDetails.$amount': quantity * product.price
+            'cartDetails.$.amount': quantity * product.price
         }
     },
         { new: true }
