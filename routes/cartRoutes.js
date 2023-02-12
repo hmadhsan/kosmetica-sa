@@ -16,6 +16,8 @@ const populate = {
     }
 }
 
+//add cart
+
 router.post('/addToCart', auth, async (req, res) => {
 
     const customerCart = await Cart.findOne({ _customerId: req.customerId });

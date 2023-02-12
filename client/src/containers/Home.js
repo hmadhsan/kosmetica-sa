@@ -96,7 +96,8 @@ function Home() {
   useEffect(() => {
     getProductList(query);
 
-  }, [])
+  }, []);
+
   const renderImages = () => {
     return (
       <Carousel autoplay>
@@ -119,7 +120,9 @@ function Home() {
       <Row gutter={[12, 12]} style={{ padding: 10 }}>
         {productList?.map((item, index) => (
 
-          <Col key={index} xs={24} sm={12} md={12} lg={6} xl={6} xxl={6}>
+          // <Col key={index} xs={24} sm={12} md={12} lg={6} xl={6} xxl={6}>
+          <Col key={index}>
+
             <Card
               hoverable
               style={{ width: 300 }}

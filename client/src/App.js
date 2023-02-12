@@ -12,13 +12,13 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import ResetPassword from "./containers/ResetPassword";
 import useCustomers from "./_actions/customerActions";
-//import Categories from './components/Categories';
+import Categories from './components/Categories';
 import Cart from "./containers/Cart";
-// import About from './components/About';
-// import Gallery  from "./components/Gallery";
-// import Teams from './components/Teams';
-// import Services from './components/Services';
-// import Foot from './components/Footer';
+import About from './components/About';
+import Gallery  from "./components/Gallery";
+import Teams from './components/Teams';
+import Services from './components/Services';
+import Foot from './components/Footer';
 import OrderHistory from "./containers/OrderHistory";
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
@@ -149,12 +149,12 @@ function App() {
           </div>
         </Content>
       </Layout>
-      {/* <Categories />
+      <Categories />
       <About />
       <Gallery/>
       <Teams />
       <Services />
-      <Foot /> */}
+      <Foot />
     </BrowserRouter>
   );
 }
