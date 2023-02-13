@@ -104,7 +104,7 @@ function Home() {
   const renderImages = () => {
     return (
       // <h1></h1>
-      <Carousel autoplay dots={true}>
+      <Carousel autoplay dots={true} >
         <div className='content'>
 
           <img src={banner1} style={contentStyle}/>    
