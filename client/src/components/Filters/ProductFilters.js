@@ -59,8 +59,7 @@ const ProductFilters = (props) => {
         <>
                      <div className="heading">
                         <h1>featured products</h1>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
-                            minus optio?</p>
+                        <p>We are leading market in cosmetics in all over europe and Some of our best selling products are </p>
                     </div>
         <Row gutter={[8, 8]} style={{ padding: 10 }}>
 
