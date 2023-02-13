@@ -24,12 +24,11 @@ const HomeScreen = () => {
     <div className="slide">
         <div className="content">
             <img src={require('../images/content-img-2.png')} alt=""/>
-            <span>new arrivals 2022</span>
-            <h3>accessories</h3>
+    
             <a href="#" className="btn">read more</a>
             <div className="controls">
-                {/* <div className="fas fa-angle-left" onClick="prev()"></div>
-                <div className="fas fa-angle-right" onClick="next()"></div> */}
+                <div className="fas fa-angle-left" onClick="prev()"></div>
+                <div className="fas fa-angle-right" onClick="next()"></div>
             </div>
         </div>
         <div className="image">

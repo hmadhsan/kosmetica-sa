@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {  Avatar, Card, Row, Space, Typography, Col, message } from 'antd';
+import {Carousel,  Avatar, Card, Row, Space, Typography, Col, message } from 'antd';
 import { EyeOutlined, ShoppingCartOutlined, DownOutlined } from '@ant-design/icons';
 import ProductModalDetails from '../components/modal/ProductModalDetails';
 import banner1 from "../assets/images/img-1.jpg";
@@ -9,7 +9,7 @@ import banner3 from "../assets/images/img-3.jpg";
 import useProducts from '../_actions/productActions';
 import ProductFilters from '../components/Filters/ProductFilters';
 import useCarts from '../_actions/cartActions';
-import Carousel from 'react-bootstrap/Carousel';
+
 
 // import Categories from '../components/Categories';
 const contentStyle = {
@@ -20,6 +20,7 @@ const contentStyle = {
   lineHeight: '160px',
   textAlign: 'center',
   background: '#364d79',
+
 };
 
 const { Text } = Typography;
@@ -102,19 +103,20 @@ function Home() {
 
   const renderImages = () => {
     return (
-      <h1></h1>
-      // <Carousel autoplay>
-      //   <div>
-      //     <img src={banner1} style={contentStyle} />
-      //   </div>
-      //   <div>
-      //     <img src={banner2} style={contentStyle} />
-      //   </div>
-      //   <div>
-      //     <img src={banner3} style={contentStyle} />
-      //   </div>
+      // <h1></h1>
+      <Carousel autoplay dots={true}>
+        <div className='content'>
 
-      // </Carousel>
+          <img src={banner1} style={contentStyle}/>    
+        </div>
+        <div>
+          <img src={banner2} style={contentStyle} />
+        </div>
+        <div>
+          <img src={banner3} style={contentStyle} />
+        </div>
+
+      </Carousel>
     )
   }
 
@@ -156,42 +158,7 @@ function Home() {
   return (
 
     <div>
-      <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={banner1}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={banner1}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={banner1}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-   
-      </Carousel>
+
       {renderImages()}
       {renderFilters()}
       {renderProductList()}
