@@ -13,8 +13,7 @@ const Footer = () => {
             <a className="link" href="#shop"> <i className="fas fa-angle-right"></i> Shop</a>
             <a className="link" href="#gallery"> <i className="fas fa-angle-right"></i> Gallery</a>
             <a className="link" href="#team"> <i className="fas fa-angle-right"></i> Team</a>
-            <a className="link" href="#arrivals"> <i className="fas fa-angle-right"></i> Arrivals</a>
-            <a className="link" href="#blogs"> <i className="fas fa-angle-right"></i> blogss</a>
+           
         </div>
 
         <div className="box">
@@ -55,7 +54,7 @@ const Footer = () => {
 
     </div>
 
-    <div className="credit"> Design and Developed by <span>Team Bajwa</span> | all rights reserved! </div>
+    <div className="credit"> Design and Developed by <span>Team Kosmetica TH Bingen</span> | all rights reserved! </div>
 
 </section>
 

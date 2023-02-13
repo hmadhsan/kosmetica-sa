@@ -18,6 +18,8 @@ const Gallery = () => {
     <a href="images/img-4.jpg"><img src={require('../images/img-4.jpg')} alt=""/> </a>
     <a href="images/img-5.jpg"><img src={require('../images/img-5.jpg')} alt=""/> </a>
     <a href="images/img-6.jpg"><img src={require('../images/img-6.jpg')} alt=""/> </a>
+    <a href="images/img-5.jpg"><img src={require('../images/img-5.jpg')} alt=""/> </a>
+    <a href="images/img-6.jpg"><img src={require('../images/img-6.jpg')} alt=""/> </a>
 </div>
 
 </section>

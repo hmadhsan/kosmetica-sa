@@ -1,5 +1,14 @@
 import React from 'react';
 import '../App.css';
+import { Card ,Row, Col} from 'antd';
+import daniyal from "../images/dani.jpg";
+import behnam from "../images/behnaam.jpg";
+import debtabu from "../images/debtanu.jfif";
+import swathi from "../images/swathi.jpg";
+import faisal from "../images/faisal.jpg";
+import hammad from "../images/hammad.jpg";
+
+const { Meta } = Card;
 const Teams = () => {
     /* Team section */
   return (
@@ -7,10 +16,78 @@ const Teams = () => {
 
     <div className="heading">
         <h1>our team</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
-            minus optio?</p>
+        <p>Some of our very talented team members who made possible to make Kosmetica the number 1 brand in europe are</p>
     </div>
+    <Row gutter={32}>
+    <Col span={4}>
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="example" src={hammad} />}
+  >
+    <Meta title="Hammad Hassan" description="Full-Stack Engineer" />
+  </Card>
+  </Col>
+    <Col span={4}>
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="example" src={debtabu} />}
+  >
+    <Meta title="Debtanu Ganguly" description="Backend Engineer" />
+  </Card>
+    </Col>
+    <Col span={4}>
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="example" src={swathi} />}
+  >
+    <Meta title="Swathi" description="Frontend Engineer" />
+  </Card>
+    </Col>
+    <Col span={4}>
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="example" src={daniyal} />}
+  >
+    <Meta title="Daniyal Bukhari" description="Frontend Engineer" />
+  </Card>
+    </Col>
+    <Col span={4}>
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="example" src={behnam}/>}
+  >
+    <Meta title="Behnaam" description="Frontend Engineer" />
+  </Card>
+    </Col>
+    <Col span={4}>
+    <Card
+    hoverable
+    style={{
+      width: 240,
+    }}
+    cover={<img alt="example" src={faisal} />}
+  >
+    <Meta title="Faisal Imam" description="Frontend Engineer" />
+  </Card>
+    </Col>
+  </Row>
 
+{/* 
     <div className="box-container">
 
         <div className="box">
@@ -61,7 +138,7 @@ const Teams = () => {
             </div>
         </div>
 
-    </div>
+    </div> */}
 
 </section>
 
