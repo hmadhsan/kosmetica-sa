@@ -102,7 +102,7 @@ function Home() {
 
   const renderImages = () => {
     return (
-      <h1>hello</h1>
+      <h1></h1>
       // <Carousel autoplay>
       //   <div>
       //     <img src={banner1} style={contentStyle} />

@@ -8,7 +8,7 @@ const HomeScreen = () => {
     <div className="slide active">
         <div className="content">
         <img src={require('../images/content-img-1.png')} alt=""/>
-            <span>new arrivals 2022</span>
+            <span>new arrivals 2023</span>
             <h3>cosmetics</h3>
             <a href="#" className="btn">read more</a>
             <div className="controls">

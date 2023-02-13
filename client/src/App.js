@@ -20,6 +20,7 @@ import Teams from './components/Teams';
 import Services from './components/Services';
 import Foot from './components/Footer';
 import OrderHistory from "./containers/OrderHistory";
+import HomeScreen from "./screens/HomeScreen";
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
@@ -43,6 +44,7 @@ function App() {
     const fullName = `${auth?.data?.firstName} ${auth?.data?.lastName}`;
     const itemCount = sumBy(cartItems, (item) => item?.quantity);
     return (
+     
       <Header className="app-header">
         <img src={logo} className="app-logo" />
         <Menu
@@ -91,13 +93,14 @@ function App() {
             </>
           )}
         </Menu>
-      </Header>
+   </Header>
     );
   };
 
   return (
     <BrowserRouter>
-      <Layout>
+    
+ 
         {renderHeader()}
         <Content className="app-content">
           <div className="app-wrapper">
@@ -148,7 +151,7 @@ function App() {
             </Routes>
           </div>
         </Content>
-      </Layout>
+  
       <Categories />
       <About />
       <Gallery/>
