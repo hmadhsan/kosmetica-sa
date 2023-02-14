@@ -9,20 +9,20 @@ const Services = () => {
     <img src={require('../images/service-1.png')} alt=""/>
 
         <h3>free shipping</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, fugit?</p>
+        <p>Best thing about kosmetica? We provide free shipping all over Germany</p>
     </div>
 
     <div className="box">
     <img src={require('../images/service-2.png')} alt=""/>
 
         <h3>secure payment</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, fugit?</p>
+        <p>We use stripe as a payment gateway which is one the best</p>
     </div>
 
     <div className="box">
         <img src={require('../images/service-3.png')} alt=""/>
-        <h3>2/4 support</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, fugit?</p>
+        <h3>24/7 support</h3>
+        <p>Our customer support is available for you 24/7</p>
     </div>
 
 </section>

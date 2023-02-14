@@ -7,8 +7,7 @@ const Gallery = () => {
 
 <div className="heading">
     <h1>our gallery</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi consequuntur officia beatae distinctio
-        minus optio?</p>
+    <p>Some of the best Pictures in our Gallery for you are </p>
 </div>
 
 <div className="lightbox">
